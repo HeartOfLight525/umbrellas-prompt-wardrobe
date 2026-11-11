@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse and copy free, reusable outfit prompts from Umbrella’s Prompt Wardrobe.">
+  <title>Umbrella’s Prompt Wardrobe</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="wardrobe.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <span class="sprig" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    <h1>Umbrella’s Prompt Wardrobe</h1>
+    <p>Free outfit prompts for your characters</p>
+  </header>
+  <main>
+    <figure class="hero">
+      <img src="assets/amber-mess.png" width="2528" height="1696" alt="Amber mess, an illustrated magical wardrobe scene">
+    </figure>
+    <section class="browse" aria-labelledby="browse-title">
+      <h2 id="browse-title">Browse by Aesthetic</h2>
+      <div class="filters" role="group" aria-label="Filter outfits">
+        <button type="button" data-filter="all" aria-pressed="true">All Outfits</button>
+        <button type="button" data-filter="Fairycore" aria-pressed="false">Fairycore</button>
+        <button type="button" data-filter="Autumncore" aria-pressed="false">Autumncore</button>
+        <button type="button" data-filter="Cottagecore" aria-pressed="false">Cottagecore</button>
+      </div>
+      <p class="visually-hidden" id="filter-status" role="status"></p>
+      <div class="gallery">
+        <article class="card" data-aesthetics="Fairycore,Autumncore,Cottagecore" data-colors="Brown,Black">
+          <a href="outfits/maplewood-rhapsody/index.html">
+            <img src="assets/maplewood-chart.png" width="2752" height="1536" alt="Maplewood Rhapsody outfit chart" loading="lazy">
+            <div class="card-body">
+              <h3>Maplewood Rhapsody</h3>
+              <ul class="tags" aria-label="Aesthetics"><li>Fairycore</li><li>Autumncore</li><li>Cottagecore</li></ul>
+              <span class="view-link">View outfit <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer>Umbrella’s Prompt Wardrobe</footer>
+</body>
+</html>
