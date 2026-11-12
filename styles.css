@@ -105,3 +105,62 @@ footer { background: var(--cream); }
 @media (max-width: 34rem) {
   .collection .gallery { grid-template-columns: minmax(0, 1fr); }
 }
+
+.letter-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin: .7rem 0;
+}
+.letter-ranges button {
+  min-height: 1.85rem;
+  padding: .15rem .42rem;
+  border: 1px solid #c8d3b8;
+  border-radius: .45rem;
+  color: #293b1d;
+  background: #fffaf5;
+  font-size: .78rem;
+  font-weight: 650;
+}
+.letter-ranges button:disabled { opacity: .55; cursor: default; }
+.letter-ranges button:not(:disabled):hover, .letter-ranges button[aria-pressed="true"] {
+  background: var(--leaf);
+  border-color: var(--moss);
+}
+.aesthetics a {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2.5rem;
+}
+.aesthetics a::before {
+  content: "";
+  flex: 0 0 1.25rem;
+  height: 1.25rem;
+  background: url("assets/strawberry-flower.png") center / contain no-repeat;
+}
+.outfit-search { margin: .85rem 0 .6rem; }
+.outfit-search label { display: block; font-weight: 650; margin-bottom: .35rem; }
+.search-controls { display: flex; flex-wrap: wrap; gap: .45rem; }
+.search-controls input {
+  flex: 1 1 8rem;
+  width: 100%;
+  min-width: 0;
+  padding: .55rem .7rem;
+  border: 1px solid var(--moss);
+  border-radius: .6rem;
+  background: #fffaf5;
+  color: var(--ink);
+  font: inherit;
+}
+.search-controls button {
+  flex: 1 0 auto;
+  border: 1px solid var(--moss);
+  border-radius: .6rem;
+  background: var(--leaf);
+  color: #293b1d;
+  padding: .55rem .85rem;
+  font-weight: 650;
+}
+.search-controls button:hover { background: var(--blush); }
+#search-status { font-size: .9rem; color: #594837; }

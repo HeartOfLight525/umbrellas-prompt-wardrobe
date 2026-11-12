@@ -6,8 +6,8 @@
   <meta name="description" content="Browse and copy free, reusable outfit prompts.">
   <title>Umbrella&rsquo;s Prompt Wardrobe</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css">
-  <script src="wardrobe.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=sidebar-search-2">
+  <script src="wardrobe.js?v=sidebar-search-2" defer></script>
 </head>
 <body>
   <header class="masthead">
@@ -19,6 +19,13 @@
     </figure>
     <nav class="aesthetics panel" aria-labelledby="browse-title">
       <h2 id="browse-title">Browse by Aesthetic</h2>
+      <form class="outfit-search" role="search" action="browse.html" method="get">
+        <label for="outfit-search">Search outfits</label>
+        <div class="search-controls">
+          <input id="outfit-search" type="search" name="q" placeholder="Name, style, or color">
+          <button type="submit">Search</button>
+        </div>
+      </form>
       <div class="letter-ranges" role="group" aria-label="Aesthetic letter ranges" hidden></div>
       <ul>
         <li><a href="browse.html">All Outfits</a></li>
@@ -52,13 +59,6 @@
     </nav>
     <section class="collection panel" aria-labelledby="favorites-title">
       <h2 id="favorites-title">Umbrella&rsquo;s Favorites</h2>
-      <form class="outfit-search" role="search" action="browse.html" method="get">
-        <label for="outfit-search">Search outfits</label>
-        <div class="search-controls">
-          <input id="outfit-search" type="search" name="q" placeholder="Try Cottagecore or pink">
-          <button type="submit">Search</button>
-        </div>
-      </form>
       <div class="gallery">
         <article class="card" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
           <a href="outfits/maplewood-rhapsody/index.html">
