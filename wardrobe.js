@@ -1,20 +1,20 @@
-const filters = [...document.querySelectorAll("[data-filter]")];
-const outfits = [...document.querySelectorAll("[data-aesthetics]")];
-const filterStatus = document.querySelector("#filter-status");
+const collectionTitle = document.querySelector("#collection-title");
 
-for (const filter of filters) {
-  filter.addEventListener("click", () => {
-    const aesthetic = filter.dataset.filter;
-    for (const button of filters) {
-      button.setAttribute("aria-pressed", String(button === filter));
+if (collectionTitle) {
+  const requested = new URLSearchParams(window.location.search).get("aesthetic");
+  const links = [...document.querySelectorAll(".aesthetics a")];
+  const selectedLink = links.find(link => link.textContent === requested);
+  const aesthetic = selectedLink?.textContent;
+
+  (selectedLink ?? links[0]).setAttribute("aria-current", "page");
+  if (aesthetic) {
+    collectionTitle.textContent = aesthetic;
+    for (const outfit of document.querySelectorAll("[data-aesthetics]")) {
+      outfit.hidden = !outfit.dataset.aesthetics.split(",").includes(aesthetic);
     }
-    for (const outfit of outfits) {
-      outfit.hidden = aesthetic !== "all" && !outfit.dataset.aesthetics.split(",").includes(aesthetic);
-    }
-    const count = outfits.filter(outfit => !outfit.hidden).length;
-    filterStatus.textContent = count === 1 ? "1 outfit shown." : `${count} outfits shown.`;
-  });
+  }
 }
+
 
 const copyButton = document.querySelector("#copy-prompt");
 copyButton?.addEventListener("click", async () => {

@@ -1,7 +1,7 @@
-# Umbrella’s Prompt Wardrobe
+# Umbrella's Prompt Wardrobe
 
-A static outfit prompt gallery with a homepage and a dedicated Maplewood Rhapsody page. Serve the project root with any static web server. All navigation and asset paths are relative for use on a GitHub Pages project site.
+A static outfit prompt gallery. The homepage features Umbrella's Favorites, and the aesthetic sidebar opens the separate collection at browse.html. Outfit pages contain their approved prompts, charts, and named examples.
 
-The homepage card stores its aesthetics and colors in `data-aesthetics` and `data-colors`. The outfit page holds the approved prompt in `#prompt-text`. Copy Prompt uses the browser clipboard on HTTPS or localhost and selects the prompt if clipboard access fails.
+Serve the project root with any static web server. Navigation and artwork paths are relative so they also work in a GitHub Pages project site. Copy Prompt uses the browser clipboard on HTTPS or localhost and selects the prompt if clipboard access fails.
 
-The gallery has no backend dependencies. Combined search, ratings, comments, and account features are future work.
+Gallery cards store their aesthetics and colors in data-aesthetics and data-colors. The site has no backend dependencies.

@@ -3,44 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Browse and copy free, reusable outfit prompts from Umbrella’s Prompt Wardrobe.">
-  <title>Umbrella’s Prompt Wardrobe</title>
+  <meta name="description" content="Browse and copy free, reusable outfit prompts.">
+  <title>Umbrella&rsquo;s Prompt Wardrobe</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
   <script src="wardrobe.js" defer></script>
 </head>
 <body>
   <header class="masthead">
-    <span class="sprig" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-    <h1>Umbrella’s Prompt Wardrobe</h1>
-    <p>Free outfit prompts for your characters</p>
+    <h1><img src="assets/wardrobe-logo.webp" width="1200" height="400" alt="Umbrella&rsquo;s Prompt Wardrobe"></h1>
   </header>
-  <main>
+  <main class="wardrobe-layout home-layout">
     <figure class="hero">
       <img src="assets/amber-mess.png" width="2528" height="1696" alt="Amber mess, an illustrated magical wardrobe scene">
     </figure>
-    <section class="browse" aria-labelledby="browse-title">
+    <nav class="aesthetics panel" aria-labelledby="browse-title">
       <h2 id="browse-title">Browse by Aesthetic</h2>
-      <div class="filters" role="group" aria-label="Filter outfits">
-        <button type="button" data-filter="all" aria-pressed="true">All Outfits</button>
-        <button type="button" data-filter="Fairycore" aria-pressed="false">Fairycore</button>
-        <button type="button" data-filter="Autumncore" aria-pressed="false">Autumncore</button>
-        <button type="button" data-filter="Cottagecore" aria-pressed="false">Cottagecore</button>
-      </div>
-      <p class="visually-hidden" id="filter-status" role="status"></p>
+      <ul>
+        <li><a href="browse.html">All Outfits</a></li>
+        <li><a href="browse.html?aesthetic=Boho">Boho</a></li>
+        <li><a href="browse.html?aesthetic=Cottagecore">Cottagecore</a></li>
+        <li><a href="browse.html?aesthetic=Dark%20Academia">Dark Academia</a></li>
+        <li><a href="browse.html?aesthetic=Dark%20Romance">Dark Romance</a></li>
+        <li><a href="browse.html?aesthetic=Ethereal">Ethereal</a></li>
+        <li><a href="browse.html?aesthetic=Royalcore">Royalcore</a></li>
+        <li><a href="browse.html?aesthetic=Steampunk">Steampunk</a></li>
+        <li><a href="browse.html?aesthetic=Whimsigoth">Whimsigoth</a></li>
+      </ul>
+    </nav>
+    <section class="collection panel" aria-labelledby="favorites-title">
+      <h2 id="favorites-title">Umbrella&rsquo;s Favorites</h2>
       <div class="gallery">
-        <article class="card" data-aesthetics="Fairycore,Autumncore,Cottagecore" data-colors="Brown,Black">
+        <article class="card" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
           <a href="outfits/maplewood-rhapsody/index.html">
             <img src="assets/maplewood-chart.png" width="2752" height="1536" alt="Maplewood Rhapsody outfit chart" loading="lazy">
             <div class="card-body">
               <h3>Maplewood Rhapsody</h3>
-              <ul class="tags" aria-label="Aesthetics"><li>Fairycore</li><li>Autumncore</li><li>Cottagecore</li></ul>
-              <span class="view-link">View outfit <span aria-hidden="true">→</span></span>
+              <ul class="tags" aria-label="Aesthetics"><li>Steampunk</li><li>Cottagecore</li><li>Boho</li><li>Dark Academia</li></ul>
+              <span class="view-link">View outfit <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-aesthetics="Whimsigoth,Royalcore,Ethereal,Dark Romance" data-colors="Gold,Black,Orange,Red">
+          <a href="outfits/sunburst-aria/index.html">
+            <img src="assets/sunburst-chart.webp" width="2752" height="1536" alt="Sunburst Aria outfit chart" loading="lazy">
+            <div class="card-body">
+              <h3>Sunburst Aria</h3>
+              <ul class="tags" aria-label="Aesthetics"><li>Whimsigoth</li><li>Royalcore</li><li>Ethereal</li><li>Dark Romance</li></ul>
+              <span class="view-link">View outfit <span aria-hidden="true">&rarr;</span></span>
             </div>
           </a>
         </article>
       </div>
     </section>
   </main>
-  <footer>Umbrella’s Prompt Wardrobe</footer>
+  <footer>Umbrella&rsquo;s Prompt Wardrobe</footer>
 </body>
 </html>

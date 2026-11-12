@@ -24,21 +24,8 @@ a { color: inherit; }
 button { font: inherit; cursor: pointer; }
 :focus-visible { outline: 3px solid #923856; outline-offset: 4px; }
 [hidden] { display: none !important; }
-.masthead { padding: 2.15rem 1rem 1.65rem; text-align: center; }
-.masthead p { margin-top: .85rem; color: #665344; }
-.sprig { width: 70px; height: 22px; display: block; margin: 0 auto .7rem; position: relative; }
-.sprig::before { content: ""; position: absolute; inset: 4px 5px 5px; border-bottom: 2px solid var(--moss); border-radius: 50%; transform: rotate(-9deg); }
-.sprig i { position: absolute; width: 12px; height: 6px; border-radius: 90% 0 90% 0; background: var(--moss); transform: rotate(36deg); top: 7px; left: 14px; }
-.sprig i:nth-child(2) { left: 27px; top: 4px; }
-.sprig i:nth-child(3) { left: 35px; top: 15px; transform: rotate(-15deg); }
-.sprig i:nth-child(4) { left: 45px; top: 2px; }
-.sprig i:nth-child(5) { left: 53px; top: 11px; transform: rotate(-18deg); background: var(--rose); }
 .hero { max-width: 55rem; margin: 0 auto; width: calc(100% - 2rem); padding: .4rem; border: 1px solid var(--line); border-radius: 1.1rem; background: #fff9f4; box-shadow: 0 8px 30px #6d493018; }
 .hero img { border-radius: .75rem; }
-.browse { width: min(68rem, calc(100% - 2rem)); margin: clamp(2rem, 6vw, 4.5rem) auto; text-align: center; }
-.filters { display: flex; justify-content: center; flex-wrap: wrap; gap: .55rem; margin: 1.2rem 0 1.75rem; }
-.filters button, #copy-prompt { border: 1px solid var(--moss); color: #253219; border-radius: 2rem; padding: .65rem 1rem; font-weight: 650; background: transparent; }
-.filters button:hover, .filters button[aria-pressed="true"] { background: var(--leaf); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 24rem)); justify-content: center; gap: 1.25rem; }
 .card { border: 1px solid #e8b8c9; padding: .55rem; border-radius: 1.15rem; background: var(--blush); text-align: left; box-shadow: 0 6px 22px #6d493015; }
 .card a { display: block; border-radius: .75rem; overflow: hidden; text-decoration: none; background: #fffaf5; }
@@ -50,9 +37,6 @@ button { font: inherit; cursor: pointer; }
 .view-link, .back { display: inline-block; font-weight: 650; color: #465e32; }
 .view-link { margin-top: 1rem; }
 footer { padding: 1.2rem 1rem; border-top: 1px solid var(--line); text-align: center; color: #665344; }
-.compact { border-bottom: 1px solid var(--line); padding: 1rem; }
-.brand { font-size: 1.55rem; text-decoration: none; }
-.brand:hover { text-decoration: underline; }
 .outfit { width: min(58rem, calc(100% - 2rem)); margin: 1.5rem auto 3.5rem; }
 .outfit h1 { margin-top: 1rem; font-size: clamp(2.35rem, 6vw, 4.4rem); }
 .outfit .tags { margin-bottom: 1.35rem; }
@@ -61,10 +45,63 @@ footer { padding: 1.2rem 1rem; border-top: 1px solid var(--line); text-align: ce
 figcaption { padding: .55rem .4rem .2rem; }
 .prompt-panel { margin: 1.5rem 0 2.5rem; padding: clamp(1rem, 4vw, 2rem); border: 1px solid var(--line); border-radius: 1rem; box-shadow: inset 0 0 0 4px #f6e4e7; }
 .prompt-heading { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: .75rem; }
-#copy-prompt { background: var(--moss); color: #151a0f; }
+#copy-prompt { background: var(--moss); color: #151a0f; border: 1px solid var(--moss); border-radius: 2rem; padding: .65rem 1rem; font-weight: 650; }
 #copy-prompt:hover { background: var(--leaf); }
 #copy-status { margin-top: .6rem; color: #465e32; }
 #prompt-text { max-width: 76ch; line-height: 1.65; }
 #prompt-text p { margin-top: .85rem; }
 .example-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; max-width: 44rem; margin-top: 1rem; }
-.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+body {
+  background: var(--cream) url("assets/wardrobe-pattern.webp") repeat center top / clamp(36rem, 55vw, 52rem) auto;
+}
+.masthead { padding: 1.6rem 1rem 1.2rem; }
+.masthead h1, .brand { display: block; width: min(100%, 46rem); margin-inline: auto; }
+.compact .brand { max-width: 25rem; }
+.wardrobe-layout {
+  width: min(74rem, calc(100% - 2rem));
+  margin: 0 auto 2.5rem;
+  display: grid;
+  grid-template-columns: 13.5rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1.35rem;
+}
+.home-layout { grid-template-areas: "nav hero" "nav collection"; }
+.browse-layout { grid-template-areas: "nav collection"; }
+.hero { grid-area: hero; max-width: none; width: 100%; margin: 0; }
+.panel {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 1.15rem;
+  box-shadow: 0 8px 30px #6d493018;
+}
+.aesthetics { grid-area: nav; padding: 1rem; }
+.aesthetics h2 { font-size: 1.55rem; }
+.aesthetics ul { list-style: none; display: grid; gap: .4rem; padding: 0; margin: .85rem 0 0; }
+.aesthetics a {
+  display: block;
+  padding: .5rem .7rem;
+  border: 1px solid #c8d3b8;
+  border-radius: .6rem;
+  color: #293b1d;
+  background: #fffaf5;
+  text-decoration: none;
+  font-weight: 600;
+}
+.aesthetics a:hover, .aesthetics a[aria-current="page"] { background: var(--leaf); }
+.collection { grid-area: collection; padding: clamp(.85rem, 3vw, 1.7rem); }
+.collection h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+.collection .gallery { margin-top: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card a { height: 100%; }
+.tags a:hover { color: #71314b; }
+.outfit { padding: clamp(1rem, 4vw, 2rem); }
+footer { background: var(--cream); }
+@media (max-width: 45rem) {
+  .wardrobe-layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .home-layout { grid-template-areas: "hero" "collection" "nav"; }
+  .browse-layout { grid-template-areas: "nav" "collection"; }
+  .aesthetics ul { grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); }
+}
+@media (max-width: 34rem) {
+  .collection .gallery { grid-template-columns: minmax(0, 1fr); }
+}
