@@ -6,8 +6,8 @@
   <meta name="description" content="Browse and copy free, reusable outfit prompts.">
   <title>Umbrella&rsquo;s Prompt Wardrobe</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=sidebar-search-2">
-  <script src="wardrobe.js?v=sidebar-search-2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=gallery-pages-1">
+  <script src="wardrobe.js?v=gallery-pages-1" defer></script>
 </head>
 <body>
   <header class="masthead">
@@ -21,12 +21,22 @@
       <h2 id="browse-title">Browse by Aesthetic</h2>
       <form class="outfit-search" role="search" action="browse.html" method="get">
         <label for="outfit-search">Search outfits</label>
+        <label for="outfit-gender">Outfit gender</label>
+        <select id="outfit-gender" name="gender">
+          <option value="">All</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <label for="outfit-search">Search outfits</label>
         <div class="search-controls">
           <input id="outfit-search" type="search" name="q" placeholder="Name, style, or color">
           <button type="submit">Search</button>
         </div>
       </form>
-      <div class="letter-ranges" role="group" aria-label="Aesthetic letter ranges" hidden></div>
+      <div class="aesthetic-letter" hidden>
+        <label for="aesthetic-letter">Aesthetics by letter</label>
+        <select id="aesthetic-letter"><option value="">All letters</option></select>
+      </div>
       <ul>
         <li><a href="browse.html">All Outfits</a></li>
         <li><a href="browse.html?aesthetic=Academia">Academia</a></li>
@@ -173,7 +183,7 @@
     <section class="collection panel" aria-labelledby="favorites-title">
       <h2 id="favorites-title">Umbrella&rsquo;s Favorites</h2>
       <div class="gallery">
-        <article class="card" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
+        <article class="card" data-gender="female" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
           <a href="outfits/maplewood-rhapsody/index.html">
             <img src="assets/maplewood-chart.png" width="2752" height="1536" alt="Maplewood Rhapsody outfit chart" loading="lazy">
             <div class="card-body">
@@ -183,7 +193,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Whimsigoth,Royalcore,Ethereal,Dark Romance" data-colors="Gold,Black,Orange,Red">
+        <article class="card" data-gender="female" data-aesthetics="Whimsigoth,Royalcore,Ethereal,Dark Romance" data-colors="Gold,Black,Orange,Red">
           <a href="outfits/sunburst-aria/index.html">
             <img src="assets/sunburst-chart.webp" width="2752" height="1536" alt="Sunburst Aria outfit chart" loading="lazy">
             <div class="card-body">

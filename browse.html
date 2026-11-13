@@ -6,8 +6,8 @@
   <meta name="description" content="Browse the outfit prompt collection by aesthetic.">
   <title>Browse Outfits &middot; Umbrella&rsquo;s Prompt Wardrobe</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=sidebar-search-2">
-  <script src="wardrobe.js?v=sidebar-search-2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=gallery-pages-1">
+  <script src="wardrobe.js?v=gallery-pages-1" defer></script>
 </head>
 <body>
   <header class="masthead compact">
@@ -18,13 +18,23 @@
       <h2 id="browse-title">Browse by Aesthetic</h2>
       <form class="outfit-search" role="search" action="browse.html" method="get">
         <label for="outfit-search">Search outfits</label>
+        <label for="outfit-gender">Outfit gender</label>
+        <select id="outfit-gender" name="gender">
+          <option value="">All</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <label for="outfit-search">Search outfits</label>
         <div class="search-controls">
           <input id="outfit-search" type="search" name="q" placeholder="Name, style, or color">
           <button type="submit">Search</button>
         </div>
         <input type="hidden" name="aesthetic" value="">
       </form>
-      <div class="letter-ranges" role="group" aria-label="Aesthetic letter ranges" hidden></div>
+      <div class="aesthetic-letter" hidden>
+        <label for="aesthetic-letter">Aesthetics by letter</label>
+        <select id="aesthetic-letter"><option value="">All letters</option></select>
+      </div>
       <ul>
         <li><a href="browse.html">All Outfits</a></li>
         <li><a href="browse.html?aesthetic=Academia">Academia</a></li>
@@ -172,7 +182,7 @@
       <h1 id="collection-title">All Outfits</h1>
       <p id="search-status" role="status"></p>
       <div class="gallery">
-        <article class="card" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
+        <article class="card" data-gender="female" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
           <a href="outfits/maplewood-rhapsody/index.html">
             <img src="assets/maplewood-chart.png" width="2752" height="1536" alt="Maplewood Rhapsody outfit chart" loading="lazy">
             <div class="card-body">
@@ -182,7 +192,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Whimsigoth,Royalcore,Ethereal,Dark Romance" data-colors="Gold,Black,Orange,Red">
+        <article class="card" data-gender="female" data-aesthetics="Whimsigoth,Royalcore,Ethereal,Dark Romance" data-colors="Gold,Black,Orange,Red">
           <a href="outfits/sunburst-aria/index.html">
             <img src="assets/sunburst-chart.webp" width="2752" height="1536" alt="Sunburst Aria outfit chart" loading="lazy">
             <div class="card-body">
@@ -192,7 +202,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Resortwear,Ethereal,Fairycore" data-colors="Aqua,White,Gold,Yellow">
+        <article class="card" data-gender="female" data-aesthetics="Resortwear,Ethereal,Fairycore" data-colors="Aqua,White,Gold,Yellow">
           <a href="outfits/seafoam-sonata/index.html">
             <img src="assets/seafoam-sonata-chart.webp" width="2300" height="1284" alt="Seafoam Sonata outfit chart" loading="lazy">
             <div class="card-body">
@@ -202,7 +212,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Fairycore,Lolita,Holidaycore" data-colors="Blue,White,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Fairycore,Lolita,Holidaycore" data-colors="Blue,White,Silver">
           <a href="outfits/snowbell-waltz/index.html">
             <img src="assets/snowbell-waltz-chart.webp" width="2300" height="1284" alt="Snowbell Waltz outfit chart" loading="lazy">
             <div class="card-body">
@@ -212,7 +222,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Alt,E-Girl,Goth" data-colors="Black,Red,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Alt,E-Girl,Goth" data-colors="Black,Red,Silver">
           <a href="outfits/midnight-wolf/index.html">
             <img src="assets/midnight-wolf-chart.webp" width="2300" height="1284" alt="Midnight Wolf outfit chart" loading="lazy">
             <div class="card-body">
@@ -222,7 +232,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Sweet Lolita,Cottagecore,Kawaii" data-colors="Red,Pink,Cream,White">
+        <article class="card" data-gender="female" data-aesthetics="Sweet Lolita,Cottagecore,Kawaii" data-colors="Red,Pink,Cream,White">
           <a href="outfits/strawberry-shortcake-picnic/index.html">
             <img src="assets/strawberry-shortcake-picnic-chart.webp" width="2300" height="1284" alt="Strawberry Shortcake Picnic outfit chart" loading="lazy">
             <div class="card-body">
@@ -232,7 +242,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Royalcore,Celestial,Mahou Shoujo" data-colors="Blue,Lavender,Gold,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Royalcore,Celestial,Mahou Shoujo" data-colors="Blue,Lavender,Gold,Silver">
           <a href="outfits/crescent-wish/index.html">
             <img src="assets/crescent-wish-chart.webp" width="2300" height="1284" alt="Crescent Wish outfit chart" loading="lazy">
             <div class="card-body">
@@ -242,7 +252,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Fairycore,Cottagecore,Goblincore" data-colors="Green,Yellow,Brown">
+        <article class="card" data-gender="female" data-aesthetics="Fairycore,Cottagecore,Goblincore" data-colors="Green,Yellow,Brown">
           <a href="outfits/daisy-acorn/index.html">
             <img src="assets/daisy-acorn-chart.webp" width="2300" height="1284" alt="Daisy &amp; Acorn outfit chart" loading="lazy">
             <div class="card-body">
@@ -252,7 +262,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Harajuku,Kidcore,Kawaii" data-colors="Pink,Turquoise,Yellow,White">
+        <article class="card" data-gender="female" data-aesthetics="Harajuku,Kidcore,Kawaii" data-colors="Pink,Turquoise,Yellow,White">
           <a href="outfits/bubblegum-encore/index.html">
             <img src="assets/bubblegum-encore-chart.webp" width="2300" height="1284" alt="Bubblegum Encore outfit chart" loading="lazy">
             <div class="card-body">
@@ -262,7 +272,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Gothic Lolita,Vampirecore,Creepy Cute" data-colors="Burgundy,Black,Pink">
+        <article class="card" data-gender="female" data-aesthetics="Gothic Lolita,Vampirecore,Creepy Cute" data-colors="Burgundy,Black,Pink">
           <a href="outfits/coffin-sweetheart/index.html">
             <img src="assets/coffin-sweetheart-chart.webp" width="2300" height="1284" alt="Coffin Sweetheart outfit chart" loading="lazy">
             <div class="card-body">
@@ -272,7 +282,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mermaidcore,Royalcore,Ethereal,Fairycore" data-colors="White,Green,Turquoise,Lavender">
+        <article class="card" data-gender="female" data-aesthetics="Mermaidcore,Royalcore,Ethereal,Fairycore" data-colors="White,Green,Turquoise,Lavender">
           <a href="outfits/pearl-tide/index.html">
             <img src="assets/pearl-tide-chart.webp" width="2300" height="1284" alt="Pearl Tide outfit chart" loading="lazy">
             <div class="card-body">
@@ -282,7 +292,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Royalcore,Sweet Lolita,Cottagecore" data-colors="Yellow,Ivory,Peach">
+        <article class="card" data-gender="female" data-aesthetics="Royalcore,Sweet Lolita,Cottagecore" data-colors="Yellow,Ivory,Peach">
           <a href="outfits/peach-rose-tea-party/index.html">
             <img src="assets/peach-rose-tea-party-chart.webp" width="2300" height="1284" alt="Peach Rose Tea Party outfit chart" loading="lazy">
             <div class="card-body">
@@ -292,7 +302,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Pastel Goth,Soft Grunge,Y2K,Fairy Grunge,E-Girl,Alt" data-colors="Purple,Black,White,Blue">
+        <article class="card" data-gender="female" data-aesthetics="Pastel Goth,Soft Grunge,Y2K,Fairy Grunge,E-Girl,Alt" data-colors="Purple,Black,White,Blue">
           <a href="outfits/butterfly-after-dark/index.html">
             <img src="assets/butterfly-after-dark-chart.webp" width="2300" height="1284" alt="Butterfly After Dark outfit chart" loading="lazy">
             <div class="card-body">
@@ -302,7 +312,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Gothic Lolita,Royalcore,Dark Academia,Mahou Shoujo,Ouji Lolita" data-colors="Black,Purple,White,Gold">
+        <article class="card" data-gender="male" data-aesthetics="Gothic Lolita,Royalcore,Dark Academia,Mahou Shoujo,Ouji Lolita" data-colors="Black,Purple,White,Gold">
           <a href="outfits/the-violet-courtier/index.html">
             <img src="assets/the-violet-courtier-chart.webp" width="2300" height="1284" alt="The Violet Courtier outfit chart" loading="lazy">
             <div class="card-body">
@@ -312,7 +322,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mahou Shoujo,Celestial,Starcore,Kawaii" data-colors="Purple,Gold,White">
+        <article class="card" data-gender="female" data-aesthetics="Mahou Shoujo,Celestial,Starcore,Kawaii" data-colors="Purple,Gold,White">
           <a href="outfits/comet-ribbon/index.html">
             <img src="assets/comet-ribbon-chart.webp" width="2300" height="1284" alt="Comet Ribbon outfit chart" loading="lazy">
             <div class="card-body">
@@ -322,7 +332,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mahou Shoujo,Celestial,Royalcore,Whimsigoth,Fairycore" data-colors="Blue,Purple,Teal,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Mahou Shoujo,Celestial,Royalcore,Whimsigoth,Fairycore" data-colors="Blue,Purple,Teal,Gold">
           <a href="outfits/the-constellation-garden/index.html">
             <img src="assets/the-constellation-garden-chart.webp" width="2300" height="1284" alt="The Constellation Garden outfit chart" loading="lazy">
             <div class="card-body">
@@ -332,7 +342,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mahou Shoujo,Celestial,Ancient Egyptian,Goddesscore" data-colors="Orange,Yellow,Turquoise,Red">
+        <article class="card" data-gender="female" data-aesthetics="Mahou Shoujo,Celestial,Ancient Egyptian,Goddesscore" data-colors="Orange,Yellow,Turquoise,Red">
           <a href="outfits/keeper-of-the-sun/index.html">
             <img src="assets/keeper-of-the-sun-chart.webp" width="2300" height="1284" alt="Keeper of the Sun outfit chart" loading="lazy">
             <div class="card-body">
@@ -342,7 +352,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mahou Shoujo,Coquette,Princesscore,Kawaii,Idol" data-colors="Pink,Red,Gold,White">
+        <article class="card" data-gender="female" data-aesthetics="Mahou Shoujo,Coquette,Princesscore,Kawaii,Idol" data-colors="Pink,Red,Gold,White">
           <a href="outfits/royal-rose-spell/index.html">
             <img src="assets/royal-rose-spell-chart.webp" width="2300" height="1284" alt="Royal Rose Spell outfit chart" loading="lazy">
             <div class="card-body">
@@ -352,7 +362,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mahou Shoujo,Royalcore,Princecore,Ouji Lolita" data-colors="White,Gold">
+        <article class="card" data-gender="male" data-aesthetics="Mahou Shoujo,Royalcore,Princecore,Ouji Lolita" data-colors="White,Gold">
           <a href="outfits/the-gilded-cavalier/index.html">
             <img src="assets/the-gilded-cavalier-chart.webp" width="2300" height="1284" alt="The Gilded Cavalier outfit chart" loading="lazy">
             <div class="card-body">
@@ -362,7 +372,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mahou Shoujo,Cottagecore,Sweet Lolita,Country Lolita,Idol" data-colors="Green,White,Yellow">
+        <article class="card" data-gender="female" data-aesthetics="Mahou Shoujo,Cottagecore,Sweet Lolita,Country Lolita,Idol" data-colors="Green,White,Yellow">
           <a href="outfits/clover-sunshine/index.html">
             <img src="assets/clover-sunshine-chart.webp" width="2300" height="1284" alt="Clover &amp; Sunshine outfit chart" loading="lazy">
             <div class="card-body">
@@ -372,7 +382,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Coquette,Balletcore,Ryousangata,Cottagecore,Soft Girl" data-colors="White,Red,Pink">
+        <article class="card" data-gender="female" data-aesthetics="Coquette,Balletcore,Ryousangata,Cottagecore,Soft Girl" data-colors="White,Red,Pink">
           <a href="outfits/cherry-bonbon/index.html">
             <img src="assets/cherry-bonbon-chart.webp" width="2300" height="1284" alt="Cherry Bonbon outfit chart" loading="lazy">
             <div class="card-body">
@@ -382,7 +392,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Chic,French Girl,Retro,Preppy,Coquette" data-colors="Pink,White,Black">
+        <article class="card" data-gender="female" data-aesthetics="Chic,French Girl,Retro,Preppy,Coquette" data-colors="Pink,White,Black">
           <a href="outfits/rose-on-the-boulevard/index.html">
             <img src="assets/rose-on-the-boulevard-chart.webp" width="2300" height="1284" alt="Rosé on the Boulevard outfit chart" loading="lazy">
             <div class="card-body">
@@ -392,7 +402,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Jirai Kei,Ryousangata,Pastel Goth,Dark Coquette,Circuscore,Clowncore" data-colors="Black,Pink">
+        <article class="card" data-gender="female" data-aesthetics="Jirai Kei,Ryousangata,Pastel Goth,Dark Coquette,Circuscore,Clowncore" data-colors="Black,Pink">
           <a href="outfits/harlequin-heart/index.html">
             <img src="assets/harlequin-heart-chart.webp" width="2300" height="1284" alt="Harlequin Heart outfit chart" loading="lazy">
             <div class="card-body">
@@ -402,7 +412,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Coquette,Soft Girl,Clean Girl,Casual Chic,Barbiecore" data-colors="White,Pink">
+        <article class="card" data-gender="female" data-aesthetics="Coquette,Soft Girl,Clean Girl,Casual Chic,Barbiecore" data-colors="White,Pink">
           <a href="outfits/ruffles-rendezvous/index.html">
             <img src="assets/ruffles-rendezvous-chart.webp" width="2300" height="1284" alt="Ruffles &amp; Rendezvous outfit chart" loading="lazy">
             <div class="card-body">
@@ -412,7 +422,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Coastal Grandmother,Beach Aesthetic,Soft Girl,Cottagecore,Y2K" data-colors="Blue,Purple,White">
+        <article class="card" data-gender="female" data-aesthetics="Coastal Grandmother,Beach Aesthetic,Soft Girl,Cottagecore,Y2K" data-colors="Blue,Purple,White">
           <a href="outfits/violets-on-the-boardwalk/index.html">
             <img src="assets/violets-on-the-boardwalk-chart.webp" width="2300" height="1284" alt="Violets on the Boardwalk outfit chart" loading="lazy">
             <div class="card-body">
@@ -422,7 +432,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Y2K,McBling,Fairy Grunge,Pastel Punk,Pop-Punk,E-Girl" data-colors="Purple,Blue,Pink,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Y2K,McBling,Fairy Grunge,Pastel Punk,Pop-Punk,E-Girl" data-colors="Purple,Blue,Pink,Silver">
           <a href="outfits/stardust-riot/index.html">
             <img src="assets/stardust-riot-chart.webp" width="2300" height="1284" alt="Stardust Riot outfit chart" loading="lazy">
             <div class="card-body">
@@ -432,7 +442,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Soft Girl,Coquette,Cottagecore,Art Hoe,Kawaii" data-colors="Cream,Pink,Green,Blue">
+        <article class="card" data-gender="female" data-aesthetics="Soft Girl,Coquette,Cottagecore,Art Hoe,Kawaii" data-colors="Cream,Pink,Green,Blue">
           <a href="outfits/paint-me-pink/index.html">
             <img src="assets/paint-me-pink-chart.webp" width="2300" height="1284" alt="Paint Me Pink outfit chart" loading="lazy">
             <div class="card-body">
@@ -442,7 +452,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Resortwear,Tropicalcore,Vintage,Retro,Coastal Grandmother,Beach Aesthetic" data-colors="Blue,White,Red">
+        <article class="card" data-gender="female" data-aesthetics="Resortwear,Tropicalcore,Vintage,Retro,Coastal Grandmother,Beach Aesthetic" data-colors="Blue,White,Red">
           <a href="outfits/hibiscus-holiday/index.html">
             <img src="assets/hibiscus-holiday-chart.webp" width="2300" height="1284" alt="Hibiscus Holiday outfit chart" loading="lazy">
             <div class="card-body">
@@ -452,7 +462,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Balletcore,Coquette,Angelcore,Princesscore,Bridal" data-colors="White,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Balletcore,Coquette,Angelcore,Princesscore,Bridal" data-colors="White,Silver">
           <a href="outfits/pearl-pirouette/index.html">
             <img src="assets/pearl-pirouette-chart.webp" width="2300" height="1284" alt="Pearl Pirouette outfit chart" loading="lazy">
             <div class="card-body">
@@ -462,7 +472,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Siren,Dark Mermaidcore,Old Hollywood Glamour,Dark Romance,Ethereal" data-colors="Maroon,Black">
+        <article class="card" data-gender="female" data-aesthetics="Siren,Dark Mermaidcore,Old Hollywood Glamour,Dark Romance,Ethereal" data-colors="Maroon,Black">
           <a href="outfits/sirens-cabernet/index.html">
             <img src="assets/sirens-cabernet-chart.webp" width="2300" height="1284" alt="Siren’s Cabernet outfit chart" loading="lazy">
             <div class="card-body">
@@ -472,7 +482,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Cottagecore,Romantic,Coquette,Soft Girl,Regencycore" data-colors="Lavender">
+        <article class="card" data-gender="female" data-aesthetics="Cottagecore,Romantic,Coquette,Soft Girl,Regencycore" data-colors="Lavender">
           <a href="outfits/lavender-love-letter/index.html">
             <img src="assets/lavender-love-letter-chart.webp" width="2300" height="1284" alt="Lavender Love Letter outfit chart" loading="lazy">
             <div class="card-body">
@@ -482,7 +492,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Halloween,Sweet Lolita,Classic Lolita,Autumncore,Cottagecore" data-colors="Black,Orange,Cream,Green">
+        <article class="card" data-gender="female" data-aesthetics="Halloween,Sweet Lolita,Classic Lolita,Autumncore,Cottagecore" data-colors="Black,Orange,Cream,Green">
           <a href="outfits/pumpkin-patch-parade/index.html">
             <img src="assets/pumpkin-patch-parade-chart.webp" width="2300" height="1284" alt="Pumpkin Patch Parade outfit chart" loading="lazy">
             <div class="card-body">
@@ -492,7 +502,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Ancient Egyptian,Goddesscore,Royalcore,Ethereal" data-colors="Ivory,Champagne,Gold,Blue,Turquoise">
+        <article class="card" data-gender="female" data-aesthetics="Ancient Egyptian,Goddesscore,Royalcore,Ethereal" data-colors="Ivory,Champagne,Gold,Blue,Turquoise">
           <a href="outfits/lapis-afterglow/index.html">
             <img src="assets/lapis-afterglow-chart.webp" width="2300" height="1284" alt="Lapis Afterglow outfit chart" loading="lazy">
             <div class="card-body">
@@ -502,7 +512,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Pastel Goth,Creepy Cute,Alt,Ryousangata" data-colors="Pink,Black,Purple,White">
+        <article class="card" data-gender="female" data-aesthetics="Pastel Goth,Creepy Cute,Alt,Ryousangata" data-colors="Pink,Black,Purple,White">
           <a href="outfits/love-at-first-bite/index.html">
             <img src="assets/love-at-first-bite-chart.webp" width="2300" height="1284" alt="Love at First Bite outfit chart" loading="lazy">
             <div class="card-body">
@@ -512,7 +522,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Creepy Cute,Gothic Lolita,Dark Coquette,Romantic Goth" data-colors="Pink,Purple,Black">
+        <article class="card" data-gender="female" data-aesthetics="Creepy Cute,Gothic Lolita,Dark Coquette,Romantic Goth" data-colors="Pink,Purple,Black">
           <a href="outfits/bat-my-heart/index.html">
             <img src="assets/bat-my-heart-chart.webp" width="2300" height="1284" alt="Bat My Heart outfit chart" loading="lazy">
             <div class="card-body">
@@ -522,7 +532,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Boho-Chic,Cottagecore,Soft Girl,Coquette,Y2K" data-colors="Orange,White">
+        <article class="card" data-gender="female" data-aesthetics="Boho-Chic,Cottagecore,Soft Girl,Coquette,Y2K" data-colors="Orange,White">
           <a href="outfits/apricot-in-bloom/index.html">
             <img src="assets/apricot-in-bloom-chart.webp" width="2300" height="1284" alt="Apricot in Bloom outfit chart" loading="lazy">
             <div class="card-body">
@@ -532,7 +542,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Academia,Alt-Preppy" data-colors="Blue,Green,Black,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Academia,Alt-Preppy" data-colors="Blue,Green,Black,Silver">
           <a href="outfits/bluebell-swing/index.html">
             <img src="assets/bluebell-swing-chart.webp" width="2300" height="1284" alt="Bluebell Swing outfit chart" loading="lazy">
             <div class="card-body">
@@ -542,7 +552,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Dark Coquette,Romantic Goth,Whimsigoth" data-colors="Blue,Black">
+        <article class="card" data-gender="female" data-aesthetics="Dark Coquette,Romantic Goth,Whimsigoth" data-colors="Blue,Black">
           <a href="outfits/moonlit-masquerade/index.html">
             <img src="assets/moonlit-masquerade-chart.webp" width="2300" height="1284" alt="Moonlit Masquerade outfit chart" loading="lazy">
             <div class="card-body">
@@ -552,7 +562,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Whimsigoth,Steampunk,Romantic Goth,Witchcore" data-colors="Black">
+        <article class="card" data-gender="female" data-aesthetics="Whimsigoth,Steampunk,Romantic Goth,Witchcore" data-colors="Black">
           <a href="outfits/black-lace-grimoire/index.html">
             <img src="assets/black-lace-grimoire-chart.webp" width="2300" height="1284" alt="Black Lace Grimoire outfit chart" loading="lazy">
             <div class="card-body">
@@ -562,7 +572,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Dark Coquette,Dark Romance,Royalcore,Gothic Lolita" data-colors="Black,Pink">
+        <article class="card" data-gender="female" data-aesthetics="Dark Coquette,Dark Romance,Royalcore,Gothic Lolita" data-colors="Black,Pink">
           <a href="outfits/black-rose-reverie/index.html">
             <img src="assets/black-rose-reverie-chart.webp" width="2300" height="1284" alt="Black Rose Reverie outfit chart" loading="lazy">
             <div class="card-body">
@@ -572,7 +582,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Steampunk,Kawaii,Sweet Alt,Lolita,Neo-Victorian" data-colors="Pink,Magenta,Brown,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Steampunk,Kawaii,Sweet Alt,Lolita,Neo-Victorian" data-colors="Pink,Magenta,Brown,Gold">
           <a href="outfits/strawberry-clockwork/index.html">
             <img src="assets/strawberry-clockwork-chart.webp" width="2300" height="1284" alt="Strawberry Clockwork outfit chart" loading="lazy">
             <div class="card-body">
@@ -582,7 +592,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Wa Lolita,Neo-Traditional Japanese,Princesscore,Royalcore,Fairycore" data-colors="White,Pink,Turquoise,Blue,Cream">
+        <article class="card" data-gender="female" data-aesthetics="Wa Lolita,Neo-Traditional Japanese,Princesscore,Royalcore,Fairycore" data-colors="White,Pink,Turquoise,Blue,Cream">
           <a href="outfits/sakura-snowfall/index.html">
             <img src="assets/sakura-snowfall-chart.webp" width="2300" height="1284" alt="Sakura Snowfall outfit chart" loading="lazy">
             <div class="card-body">
@@ -592,7 +602,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Burlesque,Vintage,Showgirl,Royalcore,Romance,Coquette" data-colors="Gold,Pink,Red,Black">
+        <article class="card" data-gender="female" data-aesthetics="Burlesque,Vintage,Showgirl,Royalcore,Romance,Coquette" data-colors="Gold,Pink,Red,Black">
           <a href="outfits/peacock-blush/index.html">
             <img src="assets/peacock-blush-chart.webp" width="2300" height="1284" alt="Peacock Blush outfit chart" loading="lazy">
             <div class="card-body">
@@ -602,7 +612,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Goddesscore,Greco-Roman,Ethereal,Angelcore,Royalcore" data-colors="Yellow">
+        <article class="card" data-gender="female" data-aesthetics="Goddesscore,Greco-Roman,Ethereal,Angelcore,Royalcore" data-colors="Yellow">
           <a href="outfits/ivory-oracle/index.html">
             <img src="assets/ivory-oracle-chart.webp" width="2300" height="1284" alt="Ivory Oracle outfit chart" loading="lazy">
             <div class="card-body">
@@ -612,7 +622,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Old Hollywood Glamour,Mob Wife,Royalcore,Boho Luxe" data-colors="Orange,Black,Gold,White,Brown">
+        <article class="card" data-gender="female" data-aesthetics="Old Hollywood Glamour,Mob Wife,Royalcore,Boho Luxe" data-colors="Orange,Black,Gold,White,Brown">
           <a href="outfits/marigold-overture/index.html">
             <img src="assets/marigold-overture-chart.webp" width="2300" height="1284" alt="Marigold Overture outfit chart" loading="lazy">
             <div class="card-body">
@@ -622,7 +632,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Princesscore,Royalcore,Ethereal,Romantic,Fairycore,Cottagecore" data-colors="Green,White">
+        <article class="card" data-gender="female" data-aesthetics="Princesscore,Royalcore,Ethereal,Romantic,Fairycore,Cottagecore" data-colors="Green,White">
           <a href="outfits/jasmine-jubilee/index.html">
             <img src="assets/jasmine-jubilee-chart.webp" width="2300" height="1284" alt="Jasmine Jubilee outfit chart" loading="lazy">
             <div class="card-body">
@@ -632,7 +642,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Goddesscore,Royalcore,Celestial,Fantasy" data-colors="Red,Orange,Gold,Crimson,Yellow">
+        <article class="card" data-gender="female" data-aesthetics="Goddesscore,Royalcore,Celestial,Fantasy" data-colors="Red,Orange,Gold,Crimson,Yellow">
           <a href="outfits/ember-coronation/index.html">
             <img src="assets/ember-coronation-chart.webp" width="2300" height="1284" alt="Ember Coronation outfit chart" loading="lazy">
             <div class="card-body">
@@ -642,7 +652,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Dark Romance,Gothic,Glamour,Witchcore,Dark Fairycore,Vampirecore" data-colors="Black,Purple,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Dark Romance,Gothic,Glamour,Witchcore,Dark Fairycore,Vampirecore" data-colors="Black,Purple,Silver">
           <a href="outfits/violet-venom/index.html">
             <img src="assets/violet-venom-chart.webp" width="2300" height="1284" alt="Violet Venom outfit chart" loading="lazy">
             <div class="card-body">
@@ -652,7 +662,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Fairycore,Angelcore,Coquette,Balletcore,Ethereal" data-colors="White,Blue,Pink">
+        <article class="card" data-gender="female" data-aesthetics="Fairycore,Angelcore,Coquette,Balletcore,Ethereal" data-colors="White,Blue,Pink">
           <a href="outfits/cocoon-waltz/index.html">
             <img src="assets/cocoon-waltz-chart.webp" width="2300" height="1284" alt="Cocoon Waltz outfit chart" loading="lazy">
             <div class="card-body">
@@ -662,7 +672,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Fairycore,Celestial,Ethereal,Goddesscore,Fantasy" data-colors="Purple,White,Gold,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Fairycore,Celestial,Ethereal,Goddesscore,Fantasy" data-colors="Purple,White,Gold,Silver">
           <a href="outfits/starfall-fae/index.html">
             <img src="assets/starfall-fae-chart.webp" width="2300" height="1284" alt="Starfall Fae outfit chart" loading="lazy">
             <div class="card-body">
@@ -672,7 +682,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Coquette,Soft Girl,Girly Kei,Larme Kei,Kawaii,Springcore" data-colors="White,Pink">
+        <article class="card" data-gender="female" data-aesthetics="Coquette,Soft Girl,Girly Kei,Larme Kei,Kawaii,Springcore" data-colors="White,Pink">
           <a href="outfits/sakura-sugar/index.html">
             <img src="assets/sakura-sugar-chart.webp" width="2300" height="1284" alt="Sakura Sugar outfit chart" loading="lazy">
             <div class="card-body">
@@ -682,7 +692,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Royalcore,Ethereal,Romantic,Old Hollywood Glamour" data-colors="White,Purple,Lavender,Silver,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Royalcore,Ethereal,Romantic,Old Hollywood Glamour" data-colors="White,Purple,Lavender,Silver,Gold">
           <a href="outfits/amethyst-magnolia/index.html">
             <img src="assets/amethyst-magnolia-chart.webp" width="2300" height="1284" alt="Amethyst &amp; Magnolia outfit chart" loading="lazy">
             <div class="card-body">
@@ -692,7 +702,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Harlequin,Circuscore,Gothic Lolita,Creepy Cute,Dark Carnival" data-colors="Red,Black,White,Gold,Cream">
+        <article class="card" data-gender="female" data-aesthetics="Harlequin,Circuscore,Gothic Lolita,Creepy Cute,Dark Carnival" data-colors="Red,Black,White,Gold,Cream">
           <a href="outfits/the-jesters-gambit/index.html">
             <img src="assets/the-jesters-gambit-chart.webp" width="2300" height="1284" alt="The Jester’s Gambit outfit chart" loading="lazy">
             <div class="card-body">
@@ -702,7 +712,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Circuscore,Clowncore,Sweet Lolita,Lolita,Kidcore,Retro Americana" data-colors="Red,White,Blue,Gold,Orange,Beige">
+        <article class="card" data-gender="female" data-aesthetics="Circuscore,Clowncore,Sweet Lolita,Lolita,Kidcore,Retro Americana" data-colors="Red,White,Blue,Gold,Orange,Beige">
           <a href="outfits/big-top-royalty/index.html">
             <img src="assets/big-top-royalty-chart.webp" width="2300" height="1284" alt="Big Top Royalty outfit chart" loading="lazy">
             <div class="card-body">
@@ -712,7 +722,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Cottagecore,Picniccore,Nautical,Preppy,Lolita,Otome Kei" data-colors="Cream,Yellow,Green">
+        <article class="card" data-gender="female" data-aesthetics="Cottagecore,Picniccore,Nautical,Preppy,Lolita,Otome Kei" data-colors="Cream,Yellow,Green">
           <a href="outfits/duckling-regatta/index.html">
             <img src="assets/duckling-regatta-chart.webp" width="2300" height="1284" alt="Duckling Regatta outfit chart" loading="lazy">
             <div class="card-body">
@@ -722,7 +732,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Light Academia,Preppy,Soft Boy,Kawaii Casual,Grandpacore,Vintage" data-colors="Cream,Yellow,Green">
+        <article class="card" data-gender="male" data-aesthetics="Light Academia,Preppy,Soft Boy,Kawaii Casual,Grandpacore,Vintage" data-colors="Cream,Yellow,Green">
           <a href="outfits/dapper-duckling/index.html">
             <img src="assets/dapper-duckling-chart.webp" width="2300" height="1284" alt="Dapper Duckling outfit chart" loading="lazy">
             <div class="card-body">
@@ -732,7 +742,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Sweet Lolita,Country Lolita,Cottagecore,Coquette,Soft Girl" data-colors="Lavender,Purple,White">
+        <article class="card" data-gender="female" data-aesthetics="Sweet Lolita,Country Lolita,Cottagecore,Coquette,Soft Girl" data-colors="Lavender,Purple,White">
           <a href="outfits/lilac-polka-promenade/index.html">
             <img src="assets/lilac-polka-promenade-chart.webp" width="2300" height="1284" alt="Lilac Polka Promenade outfit chart" loading="lazy">
             <div class="card-body">
@@ -742,7 +752,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Cottagecore,Folk,Sweet Lolita,Country Lolita,Fairycore" data-colors="Blue,Pink,White,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Cottagecore,Folk,Sweet Lolita,Country Lolita,Fairycore" data-colors="Blue,Pink,White,Gold">
           <a href="outfits/forget-me-not-frolic/index.html">
             <img src="assets/forget-me-not-frolic-chart.webp" width="2300" height="1284" alt="Forget-Me-Not Frolic outfit chart" loading="lazy">
             <div class="card-body">
@@ -752,7 +762,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Ouji Lolita,Kawaii,Pastel Preppy,Academia" data-colors="Blue,Pink">
+        <article class="card" data-gender="male" data-aesthetics="Ouji Lolita,Kawaii,Pastel Preppy,Academia" data-colors="Blue,Pink">
           <a href="outfits/the-skyblue-storyteller/index.html">
             <img src="assets/the-skyblue-storyteller-chart.webp" width="2300" height="1284" alt="The Skyblue Storyteller outfit chart" loading="lazy">
             <div class="card-body">
@@ -762,7 +772,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Soft Boy,Pastel Preppy,Cottagecore,Springcore,Kawaii,Casual" data-colors="White,Pink">
+        <article class="card" data-gender="male" data-aesthetics="Soft Boy,Pastel Preppy,Cottagecore,Springcore,Kawaii,Casual" data-colors="White,Pink">
           <a href="outfits/posies-plaid/index.html">
             <img src="assets/posies-plaid-chart.webp" width="2300" height="1284" alt="Posies &amp; Plaid outfit chart" loading="lazy">
             <div class="card-body">
@@ -772,7 +782,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Kawaii,Harajuku Streetwear,Y2K,McBling,Coquette,Soft Girl" data-colors="Pink,Blue">
+        <article class="card" data-gender="female" data-aesthetics="Kawaii,Harajuku Streetwear,Y2K,McBling,Coquette,Soft Girl" data-colors="Pink,Blue">
           <a href="outfits/bunny-hop-pop/index.html">
             <img src="assets/bunny-hop-pop-chart.webp" width="2300" height="1284" alt="Bunny Hop Pop outfit chart" loading="lazy">
             <div class="card-body">
@@ -782,7 +792,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Old Money,Vintage,Dark Academia,Corpcore,Mob Wife,Glamour" data-colors="Black,White,Purple,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Old Money,Vintage,Dark Academia,Corpcore,Mob Wife,Glamour" data-colors="Black,White,Purple,Gold">
           <a href="outfits/plum-pearls/index.html">
             <img src="assets/plum-pearls-chart.webp" width="2300" height="1284" alt="Plum &amp; Pearls outfit chart" loading="lazy">
             <div class="card-body">
@@ -792,7 +802,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Piratecore,Dark Academia,Fantasy" data-colors="Black,White,Brown">
+        <article class="card" data-gender="female" data-aesthetics="Piratecore,Dark Academia,Fantasy" data-colors="Black,White,Brown">
           <a href="outfits/the-emerald-corsair/index.html">
             <img src="assets/the-emerald-corsair-chart.webp" width="2300" height="1284" alt="The Emerald Corsair outfit chart" loading="lazy">
             <div class="card-body">
@@ -802,7 +812,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Vintage Cabaret,Showgirl,Kawaii,Sweetcore,Pin-Up,Retro" data-colors="Brown,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Vintage Cabaret,Showgirl,Kawaii,Sweetcore,Pin-Up,Retro" data-colors="Brown,Gold">
           <a href="outfits/chocolate-chip-cabaret/index.html">
             <img src="assets/chocolate-chip-cabaret-chart.webp" width="2300" height="1284" alt="Chocolate Chip Cabaret outfit chart" loading="lazy">
             <div class="card-body">
@@ -812,7 +822,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Novelty Fashion,Kawaii,Camp,Kidcore,Sweet Lolita" data-colors="Orange,Brown">
+        <article class="card" data-gender="female" data-aesthetics="Novelty Fashion,Kawaii,Camp,Kidcore,Sweet Lolita" data-colors="Orange,Brown">
           <a href="outfits/sunny-side-stack/index.html">
             <img src="assets/sunny-side-stack-chart.webp" width="2300" height="1284" alt="Sunny-Side Stack outfit chart" loading="lazy">
             <div class="card-body">
@@ -822,7 +832,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Camp,Novelty Fashion,Kawaii,Quirky" data-colors="Yellow,Red,Brown">
+        <article class="card" data-gender="female" data-aesthetics="Camp,Novelty Fashion,Kawaii,Quirky" data-colors="Yellow,Red,Brown">
           <a href="outfits/spaghetti-twirl/index.html">
             <img src="assets/spaghetti-twirl-chart.webp" width="2300" height="1284" alt="Spaghetti Twirl outfit chart" loading="lazy">
             <div class="card-body">
@@ -832,7 +842,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Kawaii,Camp,Novelty Fashion,Sweet Lolita,Hime Lolita,Kidcore" data-colors="Yellow,Red,Brown">
+        <article class="card" data-gender="female" data-aesthetics="Kawaii,Camp,Novelty Fashion,Sweet Lolita,Hime Lolita,Kidcore" data-colors="Yellow,Red,Brown">
           <a href="outfits/pepperoni-promenade/index.html">
             <img src="assets/pepperoni-promenade-chart.webp" width="2300" height="1284" alt="Pepperoni Promenade outfit chart" loading="lazy">
             <div class="card-body">
@@ -842,7 +852,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Novelty Fashion,Camp,Kidcore" data-colors="Tan,Brown,Green,Red,Yellow,White">
+        <article class="card" data-gender="female" data-aesthetics="Novelty Fashion,Camp,Kidcore" data-colors="Tan,Brown,Green,Red,Yellow,White">
           <a href="outfits/the-burger-deluxe/index.html">
             <img src="assets/the-burger-deluxe-chart.webp" width="2300" height="1284" alt="The Burger Deluxe outfit chart" loading="lazy">
             <div class="card-body">
@@ -852,7 +862,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Sweet Lolita,Dessertcore,Kawaii,Pastel Kei,Novelty Fashion" data-colors="Brown,Pink,Blue,White,Cream">
+        <article class="card" data-gender="female" data-aesthetics="Sweet Lolita,Dessertcore,Kawaii,Pastel Kei,Novelty Fashion" data-colors="Brown,Pink,Blue,White,Cream">
           <a href="outfits/sundae-best/index.html">
             <img src="assets/sundae-best-chart.webp" width="2300" height="1284" alt="Sundae Best outfit chart" loading="lazy">
             <div class="card-body">
@@ -862,7 +872,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Sweet Lolita,Kawaii,Dessertcore,Maidcore,Novelty Fashion" data-colors="Brown,White,Pink,Red">
+        <article class="card" data-gender="female" data-aesthetics="Sweet Lolita,Kawaii,Dessertcore,Maidcore,Novelty Fashion" data-colors="Brown,White,Pink,Red">
           <a href="outfits/chocolate-ganache/index.html">
             <img src="assets/chocolate-ganache-chart.webp" width="2300" height="1284" alt="Chocolate Ganache outfit chart" loading="lazy">
             <div class="card-body">
@@ -872,7 +882,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Sweet Lolita,Country Lolita,Cottagecore,Prairiecore,Coquette,Princesscore" data-colors="Blue,White">
+        <article class="card" data-gender="female" data-aesthetics="Sweet Lolita,Country Lolita,Cottagecore,Prairiecore,Coquette,Princesscore" data-colors="Blue,White">
           <a href="outfits/bluebell-keepsake/index.html">
             <img src="assets/bluebell-keepsake-chart.webp" width="2300" height="1284" alt="Bluebell Keepsake outfit chart" loading="lazy">
             <div class="card-body">
@@ -882,7 +892,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Princesscore,Royalcore,Cottagecore,Fairycore,Regencycore,Romantic" data-colors="Gold,Green,Cream,Pink,White">
+        <article class="card" data-gender="female" data-aesthetics="Princesscore,Royalcore,Cottagecore,Fairycore,Regencycore,Romantic" data-colors="Gold,Green,Cream,Pink,White">
           <a href="outfits/the-rose-arbor/index.html">
             <img src="assets/the-rose-arbor-chart.webp" width="2300" height="1284" alt="The Rose Arbor outfit chart" loading="lazy">
             <div class="card-body">
@@ -892,7 +902,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Pastel Goth,Dark Coquette,Gothic Lolita,Jirai Kei,Witchcore,Fairycore" data-colors="Purple,Black">
+        <article class="card" data-gender="female" data-aesthetics="Pastel Goth,Dark Coquette,Gothic Lolita,Jirai Kei,Witchcore,Fairycore" data-colors="Purple,Black">
           <a href="outfits/nightshade-valentine/index.html">
             <img src="assets/nightshade-valentine-chart.webp" width="2300" height="1284" alt="Nightshade Valentine outfit chart" loading="lazy">
             <div class="card-body">
@@ -902,7 +912,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Kawaii,Pastel Preppy,Mahou Shoujo,Idol,Soft Girl" data-colors="Pink,Cream,Blue">
+        <article class="card" data-gender="female" data-aesthetics="Kawaii,Pastel Preppy,Mahou Shoujo,Idol,Soft Girl" data-colors="Pink,Cream,Blue">
           <a href="outfits/starboard-sweetheart/index.html">
             <img src="assets/starboard-sweetheart-chart.webp" width="2300" height="1284" alt="Starboard Sweetheart outfit chart" loading="lazy">
             <div class="card-body">
@@ -912,7 +922,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Pastel Goth,Soft Grunge,Coquette,Sweet Lolita,Fairy Grunge" data-colors="Pink,White,Green,Blue,Black">
+        <article class="card" data-gender="female" data-aesthetics="Pastel Goth,Soft Grunge,Coquette,Sweet Lolita,Fairy Grunge" data-colors="Pink,White,Green,Blue,Black">
           <a href="outfits/rosebud-rebel/index.html">
             <img src="assets/rosebud-rebel-chart.webp" width="2300" height="1284" alt="Rosebud Rebel outfit chart" loading="lazy">
             <div class="card-body">
@@ -922,7 +932,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Punk,Alt,Goth,Fantasy,E-Girl" data-colors="Black,Purple,Silver,White">
+        <article class="card" data-gender="female" data-aesthetics="Punk,Alt,Goth,Fantasy,E-Girl" data-colors="Black,Purple,Silver,White">
           <a href="outfits/nightwing-renegade/index.html">
             <img src="assets/nightwing-renegade-chart.webp" width="2300" height="1284" alt="Nightwing Renegade outfit chart" loading="lazy">
             <div class="card-body">
@@ -932,7 +942,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Neo-Traditional Chinese,Modern Qipao,Royalcore,Ethereal,Romance" data-colors="Crimson,Red,White,Pink,Silver,Green">
+        <article class="card" data-gender="female" data-aesthetics="Neo-Traditional Chinese,Modern Qipao,Royalcore,Ethereal,Romance" data-colors="Crimson,Red,White,Pink,Silver,Green">
           <a href="outfits/scarlet-rose-filigree/index.html">
             <img src="assets/scarlet-rose-filigree-chart.webp" width="2300" height="1284" alt="Scarlet Rose Filigree outfit chart" loading="lazy">
             <div class="card-body">
@@ -942,7 +952,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Dark Romance,Gothic Glamour,Royalcore,Vampirecore,Romantic Goth" data-colors="Crimson,Red,Pink,Green,Gold,White">
+        <article class="card" data-gender="female" data-aesthetics="Dark Romance,Gothic Glamour,Royalcore,Vampirecore,Romantic Goth" data-colors="Crimson,Red,Pink,Green,Gold,White">
           <a href="outfits/roses-in-rouge/index.html">
             <img src="assets/roses-in-rouge-chart.webp" width="2300" height="1284" alt="Roses in Rouge outfit chart" loading="lazy">
             <div class="card-body">
@@ -952,7 +962,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Mermaidcore,Siren,Goddesscore,Royalcore" data-colors="Teal,Blue,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Mermaidcore,Siren,Goddesscore,Royalcore" data-colors="Teal,Blue,Gold">
           <a href="outfits/the-gilded-current/index.html">
             <img src="assets/the-gilded-current-chart.webp" width="2300" height="1284" alt="The Gilded Current outfit chart" loading="lazy">
             <div class="card-body">
@@ -962,7 +972,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Witchcore,Dark Academia,Gothic,Vampirecore,Dark Fantasy" data-colors="Purple,Red,Silver,Black">
+        <article class="card" data-gender="female" data-aesthetics="Witchcore,Dark Academia,Gothic,Vampirecore,Dark Fantasy" data-colors="Purple,Red,Silver,Black">
           <a href="outfits/the-crimson-hex/index.html">
             <img src="assets/the-crimson-hex-chart.webp" width="2300" height="1284" alt="The Crimson Hex outfit chart" loading="lazy">
             <div class="card-body">
@@ -972,7 +982,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Royalcore,Regency,Fantasy" data-colors="White,Orange,Gold,Ivory">
+        <article class="card" data-gender="male" data-aesthetics="Royalcore,Regency,Fantasy" data-colors="White,Orange,Gold,Ivory">
           <a href="outfits/the-phoenix-ascot/index.html">
             <img src="assets/the-phoenix-ascot-chart.webp" width="2300" height="1284" alt="The Phoenix Ascot outfit chart" loading="lazy">
             <div class="card-body">
@@ -982,7 +992,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Balletcore,Princesscore,Coquette,Pastel Idol,Kawaii,Fairycore" data-colors="Pink,Yellow,Blue">
+        <article class="card" data-gender="female" data-aesthetics="Balletcore,Princesscore,Coquette,Pastel Idol,Kawaii,Fairycore" data-colors="Pink,Yellow,Blue">
           <a href="outfits/sugarplum-melody/index.html">
             <img src="assets/sugarplum-melody-chart.webp" width="2300" height="1284" alt="Sugarplum Melody outfit chart" loading="lazy">
             <div class="card-body">
@@ -992,7 +1002,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Sweet Lolita,Classic Lolita,Cottagecore,Storybook,Kawaii" data-colors="Blue,White,Yellow,Brown">
+        <article class="card" data-gender="female" data-aesthetics="Sweet Lolita,Classic Lolita,Cottagecore,Storybook,Kawaii" data-colors="Blue,White,Yellow,Brown">
           <a href="outfits/lemon-drop-wonderland/index.html">
             <img src="assets/lemon-drop-wonderland-chart.webp" width="2300" height="1284" alt="Lemon Drop Wonderland outfit chart" loading="lazy">
             <div class="card-body">
@@ -1002,7 +1012,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Coquette,Girly Kei,Sweet Lolita,Kawaii" data-colors="Pink,Beige,Brown,White,Cream,Ivory">
+        <article class="card" data-gender="female" data-aesthetics="Coquette,Girly Kei,Sweet Lolita,Kawaii" data-colors="Pink,Beige,Brown,White,Cream,Ivory">
           <a href="outfits/teddy-bear-truffle/index.html">
             <img src="assets/teddy-bear-truffle-chart.webp" width="2300" height="1284" alt="Teddy Bear Truffle outfit chart" loading="lazy">
             <div class="card-body">
@@ -1012,7 +1022,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Royalcore,Military Chic,Celestial,Fantasy,Ouji Lolita" data-colors="Black,Gold,Blue,Brown">
+        <article class="card" data-gender="male" data-aesthetics="Royalcore,Military Chic,Celestial,Fantasy,Ouji Lolita" data-colors="Black,Gold,Blue,Brown">
           <a href="outfits/the-north-star-marshal/index.html">
             <img src="assets/the-north-star-marshal-chart.webp" width="2300" height="1284" alt="The North Star Marshal outfit chart" loading="lazy">
             <div class="card-body">
@@ -1022,7 +1032,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Dark Romance,Gothic Glamour,Royalcore,Whimsigoth" data-colors="Purple,Gold,Pink,Black">
+        <article class="card" data-gender="female" data-aesthetics="Dark Romance,Gothic Glamour,Royalcore,Whimsigoth" data-colors="Purple,Gold,Pink,Black">
           <a href="outfits/amethyst-nocturne/index.html">
             <img src="assets/amethyst-nocturne-chart.webp" width="2300" height="1284" alt="Amethyst Nocturne outfit chart" loading="lazy">
             <div class="card-body">
@@ -1032,7 +1042,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Vintage,Retro,Resortwear,Old Money,Preppy" data-colors="Blue,Black,White">
+        <article class="card" data-gender="male" data-aesthetics="Vintage,Retro,Resortwear,Old Money,Preppy" data-colors="Blue,Black,White">
           <a href="outfits/carousel-blue/index.html">
             <img src="assets/carousel-blue-chart.webp" width="2300" height="1284" alt="Carousel Blue outfit chart" loading="lazy">
             <div class="card-body">
@@ -1042,7 +1052,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Cottagecore,Picniccore,Coastal Grandmother,Beach Aesthetic,Soft Girl,Preppy,Retro" data-colors="Purple,White,Cream">
+        <article class="card" data-gender="female" data-aesthetics="Cottagecore,Picniccore,Coastal Grandmother,Beach Aesthetic,Soft Girl,Preppy,Retro" data-colors="Purple,White,Cream">
           <a href="outfits/lilac-beach-picnic/index.html">
             <img src="assets/lilac-beach-picnic-chart.webp" width="2300" height="1284" alt="Lilac Beach Picnic outfit chart" loading="lazy">
             <div class="card-body">
@@ -1052,7 +1062,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Witchcore,Fantasy,Cottagecore,Forestcore,Renaissance" data-colors="Green,Black,Purple,Silver,White">
+        <article class="card" data-gender="male" data-aesthetics="Witchcore,Fantasy,Cottagecore,Forestcore,Renaissance" data-colors="Green,Black,Purple,Silver,White">
           <a href="outfits/wisteria-wayfarer/index.html">
             <img src="assets/wisteria-wayfarer-chart.webp" width="2300" height="1284" alt="Wisteria Wayfarer outfit chart" loading="lazy">
             <div class="card-body">
@@ -1062,7 +1072,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Cosplay,Uniform Kei,Kawaii" data-colors="White,Green,Black">
+        <article class="card" data-gender="female" data-aesthetics="Cosplay,Uniform Kei,Kawaii" data-colors="White,Green,Black">
           <a href="outfits/clover-first-aid/index.html">
             <img src="assets/clover-first-aid-chart.webp" width="2300" height="1284" alt="Clover First Aid outfit chart" loading="lazy">
             <div class="card-body">
@@ -1072,7 +1082,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Classic Lolita,Otome Kei,Cottagecore,Light Academia" data-colors="White,Green,Gold,Black">
+        <article class="card" data-gender="female" data-aesthetics="Classic Lolita,Otome Kei,Cottagecore,Light Academia" data-colors="White,Green,Gold,Black">
           <a href="outfits/the-emerald-tea-room/index.html">
             <img src="assets/the-emerald-tea-room-chart.webp" width="2300" height="1284" alt="The Emerald Tea Room outfit chart" loading="lazy">
             <div class="card-body">
@@ -1082,7 +1092,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Fantasy,Scholar,Light Academia" data-colors="Pink,White,Silver">
+        <article class="card" data-gender="female" data-aesthetics="Fantasy,Scholar,Light Academia" data-colors="Pink,White,Silver">
           <a href="outfits/the-rose-quartz-cartographer/index.html">
             <img src="assets/the-rose-quartz-cartographer-chart.webp" width="2300" height="1284" alt="The Rose Quartz Cartographer outfit chart" loading="lazy">
             <div class="card-body">
@@ -1092,7 +1102,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Pastel Goth,Creepy Cute,E-Girl,Soft Grunge" data-colors="Purple,Pink,Black,Silver,Aqua">
+        <article class="card" data-gender="female" data-aesthetics="Pastel Goth,Creepy Cute,E-Girl,Soft Grunge" data-colors="Purple,Pink,Black,Silver,Aqua">
           <a href="outfits/batwing-crush/index.html">
             <img src="assets/batwing-crush-chart.webp" width="2300" height="1284" alt="Batwing Crush outfit chart" loading="lazy">
             <div class="card-body">
@@ -1102,7 +1112,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Academia,Preppy,Coquette,Holidaycore,Girly Kei" data-colors="Red,Cream,Black,Gold,White">
+        <article class="card" data-gender="female" data-aesthetics="Academia,Preppy,Coquette,Holidaycore,Girly Kei" data-colors="Red,Cream,Black,Gold,White">
           <a href="outfits/cranberry-cream/index.html">
             <img src="assets/cranberry-cream-chart.webp" width="2300" height="1284" alt="Cranberry &amp; Cream outfit chart" loading="lazy">
             <div class="card-body">
@@ -1112,7 +1122,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Cottagecore,Grandmacore,Light Academia,Soft Girl,Vintage Casual" data-colors="White,Brown,Orange,Red,Navy">
+        <article class="card" data-gender="female" data-aesthetics="Cottagecore,Grandmacore,Light Academia,Soft Girl,Vintage Casual" data-colors="White,Brown,Orange,Red,Navy">
           <a href="outfits/the-autumn-posy/index.html">
             <img src="assets/the-autumn-posy-chart.webp" width="2300" height="1284" alt="The Autumn Posy outfit chart" loading="lazy">
             <div class="card-body">
@@ -1122,7 +1132,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Creepy Cute,Halloween,Alt,Idol,Sweet Lolita" data-colors="Black,Orange,Gold">
+        <article class="card" data-gender="female" data-aesthetics="Creepy Cute,Halloween,Alt,Idol,Sweet Lolita" data-colors="Black,Orange,Gold">
           <a href="outfits/trick-or-treat-headliner/index.html">
             <img src="assets/trick-or-treat-headliner-chart.webp" width="2300" height="1284" alt="Trick-or-Treat Headliner outfit chart" loading="lazy">
             <div class="card-body">
@@ -1132,7 +1142,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Pastel Goth,Creepy Cute,Gamer Girl,E-Girl,Harajuku Casual" data-colors="Purple,Green,Turquoise,Blue">
+        <article class="card" data-gender="female" data-aesthetics="Pastel Goth,Creepy Cute,Gamer Girl,E-Girl,Harajuku Casual" data-colors="Purple,Green,Turquoise,Blue">
           <a href="outfits/monster-mixtape/index.html">
             <img src="assets/monster-mixtape-chart.webp" width="2300" height="1284" alt="Monster Mixtape outfit chart" loading="lazy">
             <div class="card-body">
@@ -1142,7 +1152,7 @@
             </div>
           </a>
         </article>
-        <article class="card" data-aesthetics="Y2K,McBling,Kawaii,Harajuku Streetwear,Coquette" data-colors="Pink,White,Black,Blue">
+        <article class="card" data-gender="female" data-aesthetics="Y2K,McBling,Kawaii,Harajuku Streetwear,Coquette" data-colors="Pink,White,Black,Blue">
           <a href="outfits/denim-heartbeat/index.html">
             <img src="assets/denim-heartbeat-chart.webp" width="2300" height="1284" alt="Denim Heartbeat outfit chart" loading="lazy">
             <div class="card-body">
@@ -1153,6 +1163,11 @@
           </a>
         </article>
       </div>
+      <nav class="pagination" aria-label="Outfit pages" hidden>
+        <a class="previous-page" aria-label="Previous page">&larr; Previous</a>
+        <span class="page-label"></span>
+        <a class="next-page" aria-label="Next page">Next &rarr;</a>
+      </nav>
     </section>
   </main>
   <footer>Umbrella&rsquo;s Prompt Wardrobe</footer>

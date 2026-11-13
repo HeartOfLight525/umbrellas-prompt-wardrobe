@@ -1,86 +1,96 @@
 const sidebar = document.querySelector(".aesthetics");
-const searchInput = document.querySelector("#outfit-search");
 const collectionTitle = document.querySelector("#collection-title");
 
 if (sidebar) {
   const params = new URLSearchParams(window.location.search);
-  const allLink = sidebar.querySelector("li:first-child a");
-  const links = [...sidebar.querySelectorAll("li + li a")];
+  const [allLink, ...links] = sidebar.querySelectorAll("li a");
   const selectedLink = links.find(link => link.textContent === params.get("aesthetic"));
-  const ranges = sidebar.querySelector(".letter-ranges");
-  const groups = ["A-D", "E-H", "I-L", "M-P", "Q-T", "U-X", "Y-Z"]
-    .map(label => ({
-      label,
-      links: links.filter(link => {
-        const initial = link.textContent.trim()[0].toUpperCase();
-        return initial >= label[0] && initial <= label[2];
-      }),
-    }));
+  const aesthetic = selectedLink?.textContent ?? "";
+  const initial = link => link.textContent.trim()[0].toUpperCase();
+  const letterSelect = sidebar.querySelector("#aesthetic-letter");
+  const letters = [...new Set(links.map(initial))].sort();
 
-  function showRange(activeGroup) {
-    for (const group of groups) {
-      const active = group === activeGroup;
-      group.button.setAttribute("aria-pressed", String(active));
-      for (const link of group.links) {
-        link.closest("li").hidden = !active;
-      }
+  for (const letter of letters) {
+    const option = document.createElement("option");
+    option.value = letter;
+    option.textContent = letter;
+    letterSelect.append(option);
+  }
+  letterSelect.value = selectedLink ? initial(selectedLink) : letters[0] ?? "";
+  function showLetter() {
+    for (const link of links) {
+      link.closest("li").hidden = Boolean(letterSelect.value && initial(link) !== letterSelect.value);
     }
   }
-
-  for (const group of groups) {
-    group.button = document.createElement("button");
-    group.button.type = "button";
-    group.button.textContent = group.label.replace("-", "\u2013");
-    group.button.disabled = group.links.length === 0;
-    group.button.addEventListener("click", () => showRange(group));
-    ranges.append(group.button);
-  }
-  if (links.length) {
-    ranges.hidden = false;
-    showRange(groups.find(group => group.links.includes(selectedLink)) ?? groups.find(group => group.links.length));
-  }
+  letterSelect.addEventListener("change", showLetter);
+  letterSelect.closest(".aesthetic-letter").hidden = false;
+  showLetter();
 
   if (collectionTitle) {
-    const aesthetic = selectedLink?.textContent;
     (selectedLink ?? allLink).setAttribute("aria-current", "page");
     if (aesthetic) collectionTitle.textContent = aesthetic;
 
+    const search = sidebar.querySelector("#outfit-search");
+    const gender = sidebar.querySelector("#outfit-gender");
     const status = document.querySelector("#search-status");
-    const outfits = [...document.querySelectorAll("[data-aesthetics]")].map(card => ({
+    const pagination = document.querySelector(".pagination");
+    const previous = pagination.querySelector(".previous-page");
+    const next = pagination.querySelector(".next-page");
+    const pageLabel = pagination.querySelector(".page-label");
+    const pageSize = 10;
+    const requestedPage = Number(params.get("page"));
+    const outfits = [...document.querySelectorAll(".gallery .card")].map(card => ({
       card,
       aesthetics: card.dataset.aesthetics.split(","),
+      gender: card.dataset.gender,
       searchable: [card.querySelector("h3").textContent, card.dataset.aesthetics, card.dataset.colors]
         .join(" ").toLowerCase(),
     }));
-    const form = searchInput.form;
-    form.elements.aesthetic.value = aesthetic ?? "";
-    searchInput.value = params.get("q") ?? "";
 
-    function showResults() {
-      const query = searchInput.value.trim();
-      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-      let visible = 0;
-      for (const { card, aesthetics, searchable } of outfits) {
-        card.hidden = Boolean(aesthetic && !aesthetics.includes(aesthetic))
-          || !terms.every(term => searchable.includes(term));
-        if (!card.hidden) visible++;
-      }
-      status.textContent = visible === 0 ? "No outfits found." : visible + (visible === 1 ? " outfit found" : " outfits found");
+    search.form.elements.aesthetic.value = aesthetic;
+    search.value = params.get("q") ?? "";
+    gender.value = ["male", "female"].includes(params.get("gender")) ? params.get("gender") : "";
 
-      for (const link of [allLink, ...links]) {
-        const url = new URL(link.href);
-        if (query) url.searchParams.set("q", query);
-        else url.searchParams.delete("q");
-        link.href = url.href;
-      }
+    function browseUrl(style, page = 1) {
+      const url = new URL("browse.html", window.location.href);
+      if (style) url.searchParams.set("aesthetic", style);
+      if (search.value.trim()) url.searchParams.set("q", search.value.trim());
+      if (gender.value) url.searchParams.set("gender", gender.value);
+      if (page > 1) url.searchParams.set("page", page);
+      return url.href;
     }
 
-    searchInput.addEventListener("input", showResults);
-    showResults();
+    function showResults(requested = 1) {
+      const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const matches = outfits.filter(outfit =>
+        (!aesthetic || outfit.aesthetics.includes(aesthetic))
+        && (!gender.value || outfit.gender === gender.value)
+        && terms.every(term => outfit.searchable.includes(term))
+      );
+      const pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
+      const page = Math.min(pageCount, Math.max(1, requested));
+      const offset = (page - 1) * pageSize;
+      const visible = new Set(matches.slice(offset, offset + pageSize));
+      for (const outfit of outfits) outfit.card.hidden = !visible.has(outfit);
+
+      status.textContent = matches.length
+        ? `Showing ${offset + 1}–${offset + visible.size} of ${matches.length} outfits`
+        : "No outfits found.";
+      pagination.hidden = pageCount <= 1;
+      pageLabel.textContent = `Page ${page} of ${pageCount}`;
+      previous.hidden = page === 1;
+      previous.href = browseUrl(aesthetic, page - 1);
+      next.hidden = page === pageCount;
+      next.href = browseUrl(aesthetic, page + 1);
+      allLink.href = browseUrl("");
+      for (const link of links) link.href = browseUrl(link.textContent);
+    }
+
+    search.addEventListener("input", () => showResults());
+    gender.addEventListener("change", () => showResults());
+    showResults(Number.isSafeInteger(requestedPage) ? requestedPage : 1);
   }
 }
-
-
 
 const copyButton = document.querySelector("#copy-prompt");
 copyButton?.addEventListener("click", async () => {
