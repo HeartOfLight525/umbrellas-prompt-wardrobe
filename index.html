@@ -6,8 +6,8 @@
   <meta name="description" content="Browse and copy free, reusable outfit prompts.">
   <title>Umbrella&rsquo;s Prompt Wardrobe</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=gallery-pages-1">
-  <script src="wardrobe.js?v=gallery-pages-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=gallery-filters-1">
+  <script src="wardrobe.js?v=gallery-filters-1" defer></script>
 </head>
 <body>
   <header class="masthead">
@@ -19,7 +19,16 @@
     </figure>
     <nav class="aesthetics panel" aria-labelledby="browse-title">
       <h2 id="browse-title">Browse by Aesthetic</h2>
+      <a class="clear-filters" href="browse.html">Clear all</a>
       <form class="outfit-search" role="search" action="browse.html" method="get">
+        <label for="prompt-style">Prompt style</label>
+        <select id="prompt-style" name="style">
+          <option value="">All styles</option>
+          <option value="natural-language">Natural Language</option>
+          <option value="tag-style">Tag Style</option>
+        </select>
+        <label for="outfit-color">Color</label>
+        <select id="outfit-color" name="color"><option value="">All colors</option><option value="aqua">Aqua</option><option value="beige">Beige</option><option value="black">Black</option><option value="blue">Blue</option><option value="brown">Brown</option><option value="burgundy">Burgundy</option><option value="champagne">Champagne</option><option value="cream">Cream</option><option value="crimson">Crimson</option><option value="gold">Gold</option><option value="green">Green</option><option value="ivory">Ivory</option><option value="lavender">Lavender</option><option value="magenta">Magenta</option><option value="maroon">Maroon</option><option value="mint">Mint</option><option value="navy">Navy</option><option value="orange">Orange</option><option value="peach">Peach</option><option value="pink">Pink</option><option value="purple">Purple</option><option value="red">Red</option><option value="rust">Rust</option><option value="silver">Silver</option><option value="tan">Tan</option><option value="teal">Teal</option><option value="turquoise">Turquoise</option><option value="white">White</option><option value="yellow">Yellow</option></select>
         <label for="outfit-search">Search outfits</label>
         <label for="outfit-gender">Outfit gender</label>
         <select id="outfit-gender" name="gender">
@@ -200,9 +209,10 @@
     <section class="collection panel" aria-labelledby="favorites-title">
       <h2 id="favorites-title">Umbrella&rsquo;s Favorites</h2>
       <div class="gallery">
-        <article class="card" data-gender="female" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
+        <article class="card" data-prompt-style="natural-language" data-gender="female" data-aesthetics="Steampunk,Cottagecore,Boho,Dark Academia" data-colors="Brown,Black">
           <a href="outfits/maplewood-rhapsody/index.html">
             <img src="assets/maplewood-chart.png" width="2752" height="1536" alt="Maplewood Rhapsody outfit chart" loading="lazy">
+            <img class="prompt-sticker" src="assets/natural-language-sticker.webp" alt="Natural Language" loading="lazy">
             <div class="card-body">
               <h3>Maplewood Rhapsody</h3>
               <ul class="tags" aria-label="Aesthetics"><li>Steampunk</li><li>Cottagecore</li><li>Boho</li><li>Dark Academia</li></ul>
@@ -210,9 +220,10 @@
             </div>
           </a>
         </article>
-        <article class="card" data-gender="female" data-aesthetics="Whimsigoth,Royalcore,Ethereal,Dark Romance" data-colors="Gold,Black,Orange,Red">
+        <article class="card" data-prompt-style="natural-language" data-gender="female" data-aesthetics="Whimsigoth,Royalcore,Ethereal,Dark Romance" data-colors="Gold,Black,Orange,Red">
           <a href="outfits/sunburst-aria/index.html">
             <img src="assets/sunburst-chart.webp" width="2752" height="1536" alt="Sunburst Aria outfit chart" loading="lazy">
+            <img class="prompt-sticker" src="assets/natural-language-sticker.webp" alt="Natural Language" loading="lazy">
             <div class="card-body">
               <h3>Sunburst Aria</h3>
               <ul class="tags" aria-label="Aesthetics"><li>Whimsigoth</li><li>Royalcore</li><li>Ethereal</li><li>Dark Romance</li></ul>

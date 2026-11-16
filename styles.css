@@ -200,3 +200,31 @@ footer { background: var(--cream); }
   text-decoration: none;
 }
 .variant-link:hover { background: var(--blush); }
+
+.aesthetics .clear-filters { margin-top: .65rem; justify-content: center; min-height: 0; }
+.aesthetics .clear-filters::before { content: none; }
+.outfit-search select, .sort-control select, #outfit-page {
+  padding: .42rem .5rem;
+  border: 1px solid var(--moss);
+  border-radius: .55rem;
+  background: #fffaf5;
+  color: var(--ink);
+  font: inherit;
+}
+.outfit-search select { width: 100%; margin-bottom: .55rem; }
+.sort-control { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .65rem 0; }
+.card { position: relative; }
+.card .prompt-sticker {
+  position: absolute;
+  top: -.7rem;
+  right: .3rem;
+  width: min(46%, 11rem);
+  height: auto;
+  filter: drop-shadow(0 2px 2px #39231e55);
+}
+.collection .gallery { row-gap: 1.55rem; }
+.page-label { display: flex; gap: .3rem; align-items: center; white-space: nowrap; }
+@media (max-width: 30rem) {
+  .pagination { grid-template-columns: 1fr auto 1fr; }
+  .pagination a { padding-inline: .3rem; }
+}

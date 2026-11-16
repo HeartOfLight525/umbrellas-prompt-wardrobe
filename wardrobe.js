@@ -32,14 +32,23 @@ if (sidebar) {
 
     const search = sidebar.querySelector("#outfit-search");
     const gender = sidebar.querySelector("#outfit-gender");
+    const styleSelect = sidebar.querySelector("#prompt-style");
+    const color = sidebar.querySelector("#outfit-color");
+    const sort = document.querySelector("#outfit-sort");
+    const pagePicker = document.querySelector("#outfit-page");
+    const gallery = document.querySelector(".collection .gallery");
     const status = document.querySelector("#search-status");
     const pagination = document.querySelector(".pagination");
     const previous = pagination.querySelector(".previous-page");
     const next = pagination.querySelector(".next-page");
-    const pageLabel = pagination.querySelector(".page-label");
+    const pageLabel = pagination.querySelector(".page-total");
     const pageSize = 10;
     const requestedPage = Number(params.get("page"));
-    const outfits = [...document.querySelectorAll(".gallery .card")].map(card => ({
+    const outfits = [...document.querySelectorAll(".gallery .card")].map((card, order) => ({
+      order,
+      title: card.querySelector("h3").textContent,
+      style: card.dataset.promptStyle,
+      colors: card.dataset.colors.toLowerCase().split(","),
       card,
       aesthetics: card.dataset.aesthetics.split(","),
       gender: card.dataset.gender,
@@ -51,11 +60,21 @@ if (sidebar) {
     search.value = params.get("q") ?? "";
     gender.value = ["male", "female"].includes(params.get("gender")) ? params.get("gender") : "";
 
+    for (const control of [styleSelect, color, sort]) {
+      const value = params.get(control.name);
+      if ([...control.options].some(option => option.value === value)) control.value = value;
+    }
+
+    const alphabetical = new Intl.Collator(undefined, { sensitivity: "base", numeric: true });
+
     function browseUrl(style, page = 1) {
       const url = new URL("browse.html", window.location.href);
       if (style) url.searchParams.set("aesthetic", style);
       if (search.value.trim()) url.searchParams.set("q", search.value.trim());
       if (gender.value) url.searchParams.set("gender", gender.value);
+      if (styleSelect.value) url.searchParams.set("style", styleSelect.value);
+      if (color.value) url.searchParams.set("color", color.value);
+      if (sort.value !== "oldest") url.searchParams.set("sort", sort.value);
       if (page > 1) url.searchParams.set("page", page);
       return url.href;
     }
@@ -65,19 +84,34 @@ if (sidebar) {
       const matches = outfits.filter(outfit =>
         (!aesthetic || outfit.aesthetics.includes(aesthetic))
         && (!gender.value || outfit.gender === gender.value)
+        && (!styleSelect.value || outfit.style === styleSelect.value)
+        && (!color.value || outfit.colors.includes(color.value))
         && terms.every(term => outfit.searchable.includes(term))
       );
+      matches.sort((a, b) => {
+        if (sort.value === "alphabetical") return alphabetical.compare(a.title, b.title) || a.order - b.order;
+        return sort.value === "newest" ? b.order - a.order : a.order - b.order;
+      });
       const pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
       const page = Math.min(pageCount, Math.max(1, requested));
       const offset = (page - 1) * pageSize;
       const visible = new Set(matches.slice(offset, offset + pageSize));
       for (const outfit of outfits) outfit.card.hidden = !visible.has(outfit);
+      for (const outfit of visible) gallery.append(outfit.card);
 
       status.textContent = matches.length
         ? `Showing ${offset + 1}–${offset + visible.size} of ${matches.length} outfits`
         : "No outfits found.";
       pagination.hidden = pageCount <= 1;
-      pageLabel.textContent = `Page ${page} of ${pageCount}`;
+      pagePicker.replaceChildren();
+      for (let index = 1; index <= pageCount; index++) {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = index;
+        pagePicker.append(option);
+      }
+      pagePicker.value = page;
+      pageLabel.textContent = "of " + pageCount;
       previous.hidden = page === 1;
       previous.href = browseUrl(aesthetic, page - 1);
       next.hidden = page === pageCount;
@@ -87,7 +121,10 @@ if (sidebar) {
     }
 
     search.addEventListener("input", () => showResults());
-    gender.addEventListener("change", () => showResults());
+    for (const control of [gender, styleSelect, color, sort]) {
+      control.addEventListener("change", () => showResults());
+    }
+    pagePicker.addEventListener("change", () => window.location.assign(browseUrl(aesthetic, Number(pagePicker.value))));
     showResults(Number.isSafeInteger(requestedPage) ? requestedPage : 1);
   }
 }
