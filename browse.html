@@ -6,7 +6,7 @@
   <meta name="description" content="Browse the outfit prompt collection by aesthetic.">
   <title>Browse Outfits &middot; Umbrella&rsquo;s Prompt Wardrobe</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=gallery-filters-1">
+  <link rel="stylesheet" href="styles.css?v=info-1">
   <script src="wardrobe.js?v=gallery-filters-1" defer></script>
 </head>
 <body>
@@ -18,7 +18,8 @@
       <h2 id="browse-title">Browse by Aesthetic</h2>
       <a class="clear-filters" href="browse.html">Clear all</a>
       <form id="outfit-filter-form" class="outfit-search" role="search" action="browse.html" method="get">
-        <label for="prompt-style">Prompt style</label>
+        <label for="prompt-style">Prompt Format</label>
+        <a class="format-help" href="info.html#natural-language-and-tag-style">What&rsquo;s the difference?</a>
         <select id="prompt-style" name="style">
           <option value="">All styles</option>
           <option value="natural-language">Natural Language</option>
@@ -1610,6 +1611,13 @@
       </nav>
     </section>
   </main>
-  <footer>Umbrella&rsquo;s Prompt Wardrobe</footer>
+  <footer>
+    <div>Umbrella&rsquo;s Prompt Wardrobe</div>
+    <nav class="footer-nav" aria-label="Site navigation">
+      <a href="info.html">Info</a>
+      <span>Meet Umbrella</span>
+      <span>Requests</span>
+    </nav>
+  </footer>
 </body>
 </html>
