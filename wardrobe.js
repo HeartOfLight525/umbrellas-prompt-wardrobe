@@ -147,3 +147,55 @@ copyButton?.addEventListener("click", async () => {
     status.textContent = "Prompt selected. Use your device’s copy command.";
   }
 });
+
+const characterData = [{"name":"Asher","gender":"male","species":"Half-Dragon/Half-Human","variants":[["Season 1","Asher Season 1.png","Red","Blue","The man with short dark red hair with dark red sideburns muttonchops in a low ponytail. He has blue eyes, gold dragon horns, and pointy ears. He has muscles. He has a red dragon scales on his body.","He wears a black undershirt, black pants, black boots, and red jacket with gold shoulder armor."],["Season 2","Asher Season 2.png","Red","Blue","The man with short dark red hair with dark red sideburns muttonchops in a low ponytail. He has blue eyes, gold dragon horns, and pointy ears. He has muscles.","He wears a black undershirt with gold trim, black pants, black boots, and aristocrat red jacket with gold trim and gold shoulder armor."],["After Season 2","Asher after Season 2.png","Red","Blue","The man with short dark red hair with dark red sideburns muttonchops in a low ponytail. He has blue eyes, gold dragon horns, and pointy ears. He has muscles and wears glasses.","He wears a black button down shirt, black pants, black boots, and aristocrat red jacket with gold trim."]]},{"name":"Clara","gender":"female","species":"Half-Fairy/Half-Human","variants":[["Season 1 Part 1","Clara season 1 part 1.png","Blue","Blue","The long blue hair woman has big, cute blue eyes and large breasts. Her hair is half up with a big hair bun and her bangs cover her forehead.","She\u2019s wearing a light blue princess dress with white frill. She is wearing 3/4 sleeves. She is wearing a silver tiara with blue diamond gems."],["Season 1 Disguise","Clara season 1 disguise.png","Black","Blue","The long black hair woman has big, cute blue eyes and large breasts. Her bangs cover her forehead.","She wears a plain long sleeve navy dress."],["Season 1 Part 2","Clara season 1 part 2.png","Blue","Blue","The long blue hair woman has big, cute blue eyes and large breasts. Her bangs cover her forehead.","She wears a long sleeve navy dress with black trim, her sleeves are transparent navy color. She wears a black corset."],["Season 2","Clara season 2.png","Blue","Blue","The long blue hair woman has her hair in a high ponytail and has big, cute blue eyes and large breasts. Her bangs cover her forehead.","She wears a sleeveless navy princess dress with black frill trim. The sleeves have black frill trim and black corset. She is wearing a black tiara with blue diamond gems."],["After Season 2","Clara after season 2.png","Blue","Blue","The long blue hair woman wears her hair in a single loose side braid and has big, cute blue eyes and large breasts. Her bangs cover her forehead.","She is wearing a navy dress with black lace trim. The long sleeves are black lace with black lace high neck."]]},{"name":"Grace","gender":"female","species":"True Hybrid (Fairy/Dragon/Human)","variants":[["Toddler Grace","Toddler Grace.png","Red","Blue","The toddler girl has big cute blue eyes, medium red hair, and small gold horns.","She is wearing a cream tank top with frill trim and cream color puffy shorts with frill trim."],["Child Grace","Child Grace.png","Red","Yellow","The child girl has big cute yellow eyes, her red hair in a high ponytail, she has gold horns.","She is wearing a blue dress with white frill trim."],["Teen Grace","Teen Grace.png","Red","Gold","The teen girl is pouting, her red hair in a high bun. She has fang bangs, big cute gold eyes, and gold horns. She has medium breasts.","She is wearing a short sleeve blue dress with white frill trim."],["Grace","Grace.png","Red","Gold","The red hair woman with a high ponytail with long fang bangs. She has big, cute gold eyes with long eyelashes, pink lips, large breasts, and gold horns.","She is wearing a blue dress, red belt, navy leggings. She is wearing a red crop jacket with gold shoulder armor."]]}];
+const characterForm = document.querySelector(".character-form");
+if (characterForm && document.querySelector(".character-gallery")) {
+  const params = new URLSearchParams(window.location.search);
+  const fields = ["q", "hair", "eyes", "gender", "species"];
+  for (const field of fields) {
+    const control = characterForm.elements[field];
+    const value = params.get(field) ?? "";
+    if (field === "q" || [...control.options].some(option => option.value === value)) control.value = value;
+  }
+  function filterCharacters() {
+    const terms = characterForm.elements.q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const value = field => characterForm.elements[field].value;
+    let count = 0;
+    for (const character of characterData) {
+      const searchable = [character.name, character.species, ...character.variants.flat()].join(" ").toLowerCase();
+      const hasVariant = character.variants.some(variant =>
+        (!value("hair") || variant[2].toLowerCase() === value("hair")) &&
+        (!value("eyes") || variant[3].toLowerCase() === value("eyes"))
+      );
+      const matches = hasVariant && (!value("gender") || character.gender === value("gender")) &&
+        (!value("species") || character.species.toLowerCase() === value("species")) &&
+        terms.every(term => searchable.includes(term));
+      document.querySelector('[data-character="' + character.name.toLowerCase() + '"]').hidden = !matches;
+      if (matches) count++;
+    }
+    document.querySelector("#character-status").textContent = count ? count + (count === 1 ? " character found" : " characters found") : "No characters found.";
+  }
+  characterForm.addEventListener("input", filterCharacters);
+  characterForm.addEventListener("change", filterCharacters);
+  filterCharacters();
+}
+for (const button of document.querySelectorAll("[data-copy-target]")) {
+  button.addEventListener("click", async () => {
+    const nodes = button.dataset.copyTarget.split(",").map(id => document.getElementById(id));
+    const text = nodes.map(node => node.textContent).join("\n\n");
+    const status = button.parentElement.querySelector(".copy-feedback");
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = "Prompt copied.";
+    } catch {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.setStartBefore(nodes[0]);
+      range.setEndAfter(nodes[nodes.length - 1]);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      status.textContent = "Text selected. Use your device’s copy command.";
+    }
+  });
+}

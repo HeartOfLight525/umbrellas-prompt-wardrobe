@@ -267,3 +267,24 @@ footer { background: var(--cream); }
 .comic-text { margin-top: .8rem; line-height: 1.65; }
 .comic-text p + p, .comic-text li + li { margin-top: .55rem; }
 ol.comic-text { padding-inline-start: 1.5rem; margin-bottom: 0; }
+
+.character-home { width: min(96rem, calc(100% - 2rem)); grid-template-columns: 13.5rem minmax(0, 1fr) 13.5rem; grid-template-areas: "nav hero characters" "nav buttons characters" "nav collection characters"; }
+.character-search { grid-area: characters; padding: 1rem; }
+.character-search h2 { font-size: 1.55rem; }
+.character-form { display: grid; gap: .4rem; margin-top: .75rem; }
+.character-form label { font-weight: 650; margin-top: .3rem; }
+.character-form :is(input, select) { min-width: 0; width: 100%; font: inherit; padding: .5rem; color: var(--ink); background: #fffaf5; border: 1px solid var(--moss); border-radius: .6rem; }
+.character-form button, .section-buttons a, [data-copy-target] { font: inherit; color: #293b1d; background: var(--leaf); border: 1px solid var(--moss); border-radius: .6rem; padding: .6rem .8rem; text-decoration: none; cursor: pointer; }
+.section-buttons { grid-area: buttons; display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-bottom: .6rem; }
+.section-buttons a:hover, [data-copy-target]:hover { background: var(--blush); }
+.characters-page { background-image: url("assets/character-background.webp"); background-size: clamp(36rem, 65vw, 65rem) auto; }
+.character-browse-layout { display: grid; grid-template-columns: minmax(0, 1fr) 14rem; grid-template-areas: "collection characters"; gap: 1.3rem; width: min(74rem, calc(100% - 2rem)); margin: 0 auto 2rem; align-items: start; }
+.character-detail > .chart { margin-top: 1rem; }
+.character-variant { margin-top: 2rem; }
+.character-variant-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1rem; margin-top: .8rem; }
+.character-variant-grid p { line-height: 1.6; margin: .6rem 0; }
+.character-variant-grid h3 { font-size: 1.5rem; margin-top: .5rem; }
+[data-copy-target] { margin: .25rem .2rem .5rem 0; }
+.character-search .clear-filters { display: inline-block; margin-top: .6rem; }
+@media(max-width: 65rem) { .character-home { grid-template-columns: 12rem minmax(0, 1fr); grid-template-areas: "nav hero" "nav buttons" "nav collection" "nav characters"; } }
+@media(max-width: 45rem) { .character-home { grid-template-columns: minmax(0, 1fr); grid-template-areas: "hero" "buttons" "collection" "nav" "characters"; } .character-browse-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "characters" "collection"; } .character-variant-grid { grid-template-columns: minmax(0, 1fr); } }

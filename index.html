@@ -6,14 +6,14 @@
   <meta name="description" content="Browse and copy free, reusable outfit prompts.">
   <title>Umbrella&rsquo;s Prompt Wardrobe</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=info-1">
-  <script src="wardrobe.js?v=gallery-filters-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=characters-1">
+  <script src="wardrobe.js?v=characters-1" defer></script>
 </head>
 <body>
   <header class="masthead">
     <h1><img src="assets/wardrobe-logo.webp" width="1200" height="400" alt="Umbrella&rsquo;s Prompt Wardrobe"></h1>
   </header>
-  <main class="wardrobe-layout home-layout">
+  <main class="wardrobe-layout home-layout character-home">
     <figure class="hero">
       <img src="assets/amber-mess.png" width="2528" height="1696" alt="Amber mess, an illustrated magical wardrobe scene">
     </figure>
@@ -206,6 +206,8 @@
         <li><a href="browse.html?aesthetic=Y2K">Y2K</a></li>
       </ul>
     </nav>
+    <nav class="section-buttons" aria-label="Prompt collections"><a href="browse.html">All Outfits</a><a href="characters.html">All Characters</a></nav>
+<aside class="character-search panel" aria-labelledby="character-search-title"><h2 id="character-search-title">Search Characters</h2><a class="clear-filters" href="characters.html">Clear all</a><form action="characters.html" method="get" class="character-form"><label for="character-query">Search characters</label><input type="search" id="character-query" name="q" placeholder="Name or character details"><label for="character-hair">Hair color</label><select id="character-hair" name="hair"><option value="">All</option><option value="red">Red</option><option value="blue">Blue</option><option value="black">Black</option></select><label for="character-eyes">Eye color</label><select id="character-eyes" name="eyes"><option value="">All</option><option value="blue">Blue</option><option value="yellow">Yellow</option><option value="gold">Gold</option></select><label for="character-gender">Gender</label><select id="character-gender" name="gender"><option value="">All</option><option value="male">Male</option><option value="female">Female</option></select><label for="character-species">Species</label><select id="character-species" name="species"><option value="">All</option><option value="half-dragon/half-human">Half-Dragon/Half-Human</option><option value="half-fairy/half-human">Half-Fairy/Half-Human</option><option value="true hybrid (fairy/dragon/human)">True Hybrid (Fairy/Dragon/Human)</option></select><button type="submit">Search</button></form></aside>
     <section class="collection panel" aria-labelledby="favorites-title">
       <h2 id="favorites-title">Umbrella&rsquo;s Favorites</h2>
       <div class="gallery">
