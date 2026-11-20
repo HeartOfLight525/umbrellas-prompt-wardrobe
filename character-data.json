@@ -115,5 +115,101 @@
         "She is wearing a blue dress, red belt, navy leggings. She is wearing a red crop jacket with gold shoulder armor."
       ]
     ]
+  },
+  {
+    "name": "Charlotte",
+    "gender": "female",
+    "species": "Human",
+    "variants": [
+      [
+        "Season 1",
+        "Charlotte Season 1.png",
+        "White",
+        "Pink",
+        "A princess with long white hair, arched bangs, pink eyes, and medium-sized breasts. She has a frowning, pouting expression.",
+        "A detailed princess blue dress with flowing puffy long skirt with pink trim. She wears a pink heart gem silver tiara."
+      ],
+      [
+        "Season 2",
+        "Charlotte Season 2.png",
+        "White",
+        "Pink",
+        "A princess with long white hair, arched bangs, pink eyes, and medium-sized breasts. She has a frowning, pouting expression.",
+        "A detailed princess pink and blue ensemble featuring a fitted light blue V-neck top with long sleeves, cut-out details, and a ribbon-laced corset. A short, multilayered skirt is paired with white leggings, light blue heels, and light blue gloves. Accessories include a heart-shaped tiara decorated with pink gemstones and a hair ribbon."
+      ],
+      [
+        "Time-skip",
+        "Charlotte Timeskip.png",
+        "White",
+        "Pink",
+        "a woman with white hair, she has arched bangs, her hair is a short bob. She has pink eyes with long eyelashes. She has pink lips, pink eye shadow, and eyeliner. She has medium size breasts. She is pouting, blushing bright red.",
+        "She is wearing a blue collar jacket dress, pink belt, white button under shirt. She is wearing pink wrist gloves, and a blue sunhat on her head with pink ribbon."
+      ]
+    ]
+  },
+  {
+    "name": "Henry",
+    "gender": "male",
+    "species": "Human",
+    "variants": [
+      [
+        "Season 1",
+        "Henry Season 1.png",
+        "White",
+        "Blue",
+        "A prince with short, softly tousled white hair, side-swept bangs, and blue eyes.",
+        "An elegant red princely tailcoat with gold trim, decorative gold buttons, structured shoulders, and gold shoulder epaulettes. The coat has broad lapels with black inset panels, ornate gold embroidery, and long split tails. Black cuffs feature matching gold embroidery. Beneath it, he wears a black high-collared shirt and a black cravat secured with a red gemstone brooch and delicate gold chains. A neatly folded white pocket square and tailored black trousers complete the ensemble."
+      ],
+      [
+        "Season 2",
+        "Henry Season 2.png",
+        "White",
+        "Blue",
+        "The man has short white hair with asymmetrical bangs and blue eyes.",
+        "He is wearing a white long vest with gold trim and gold buttons, a long open red jacket with gold trim,  black pants, utility belt, black undershirt. He has a messenger bag. He is wearing black boots,  green heart charm jewel necklace, blue heart jewel pin, and gold belt buckle with gold belt chains."
+      ],
+      [
+        "Cross-dressing",
+        "Henry Crossdressing.png",
+        "White",
+        "Blue",
+        "The man has long white hair with layers and v-bangs. He looks beautiful. He has sharp blue eyes with long eyelashes. He has red lips, red make-up, light red eyeshadow.",
+        "He is cross-dressing with a red dress with black lace trim, black underskirt, and a long skirt slit showing off his leg. He is wearing black heels, holding a red fan with black trim. He has black and red drop earrings."
+      ],
+      [
+        "Time-skip",
+        "Henry Timeskip.png",
+        "White",
+        "Blue",
+        "An adult prince with short, softly tousled white hair, side-swept bangs, and blue eyes. He is wearing an orange feather drop earring on his left ear.",
+        "He is wearing a black under shirt, black pants, and open red jacket. He has a fantasy utility belt on."
+      ]
+    ]
+  },
+  {
+    "name": "Sabine",
+    "subtitle": "Vampire of Lust",
+    "gender": "female",
+    "species": "Human → Vampire",
+    "variants": [
+      [
+        "Sabine",
+        "Sabine.png",
+        "Burgundy,Purple",
+        "Red",
+        "Beautiful adult female vampire with an extremely voluptuous hourglass figure, large breasts, very wide curvy hips, a large round butt, a narrow waist, pale skin, pointed vampire ears, sharp red eyes, long dramatic eyelashes, and small sharp vampire fangs. She has elegant mature facial features and glamorous makeup, with sharp eyeliner, smoky eye shadow, and rich burgundy lipstick.\n\nHer hair is extremely long, thick, fluffy burgundy with permanent purple streaks, cascading almost to her thighs in enormous soft cloudlike waves. It has tremendous volume and a soft, airy texture. The purple sections curl naturally through the burgundy hair in swirling, spiral-like streaks, like purple swirls painted through clouds. She has elegant curled bangs and long curled side locks framing her face.",
+        "A luxurious fitted floor-length burgundy velvet evening dress with a structured sweetheart neckline, exposed shoulders, delicate black lace accents, and a sharply fitted waist. A dramatic high slit opens along one thigh, revealing a sheer black thigh-high stocking held up by an elegant black thigh garter with a clearly visible polished metal heart-shaped clasp.\n\nLong sheer black opera gloves, pointed black high heels with subtle burgundy details, a fitted black velvet choker with a dark-purple gemstone, dangling earrings, elegant rings, and delicate jewelry complete the ensemble. An enormous luxurious fluffy faux-fur jacket is worn over the dress, left open in front.",
+        "Vampire"
+      ],
+      [
+        "Past Sabine",
+        "Sabine Past.png",
+        "Purple",
+        "Brown",
+        "The woman has extremely long, thick, fluffy purple hair, cascading almost to her thighs in enormous soft cloudlike waves. It has tremendous volume and a soft, airy texture. The hair curl naturally in swirling, spiral-like streaks, like purple swirls painted through clouds. She has elegant curled bangs and long curled side locks framing her face. She has sharp brown eyes with long eyelashes. She has an extremely voluptuous hourglass figure, large breasts, very wide curvy hips, a large round butt, a narrow waist. She has elegant mature facial features.",
+        "She is wearing a light pink sweater and brown with white plaid skirt with white lace trim. She is wearing transparent brown tights, white legwarmers with pink trim, chunky black shoes. She is wearing a brown trucker jacket and pink wool scarf that slightly covers her mouth.",
+        "Human"
+      ]
+    ]
   }
 ]
